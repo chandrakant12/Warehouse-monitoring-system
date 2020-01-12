@@ -1,0 +1,94 @@
+Basic website
+
+home 		- index.php
+about us 	- aboutUs.php
+login 		- userLogin.php
+	forgot password 	- patientForgotPassword.php
+registration- userRegister.php
+contact us	- contactUs.php
+
+======================================================
+User Login
+
+account 	- userAccount.php
+appointment 
+	add appointment		- patientAppointment.php
+	view appointment	- patientViewAppointment.php
+profile
+	view profile		- userProfile.php
+	change password		- userChangePassword.php
+prescription
+	prescription record - patientViewPrescription.php
+treatment
+	treatment record - patientTreatmentRecord.php
+logout
+	logOut.php
+
+
+======================================================
+Doctor login
+
+Doctor login panel 		- msebLogin.php
+
+account 				- doctorAccount.php
+
+settings
+	Doctor profile		- doctorProfile.php
+	change password 	- doctorChangePassword.php
+
+appointment
+	view pending appointments - doctorPendingAppointment.php
+	view approved appointments - doctorApprovedAppointment.php
+
+patient
+	view patient 		- doctorViewPatient.php
+
+doctor timings
+	add timings 		- doctorAddTimings.php 
+	view timings 		- doctorViewTimings.php
+
+treatment
+	treatment records - doctorTreatmentRecord.php 
+	view treatment 		- doctorViewTreatment.php
+
+income report			- doctorIncomeReport.php
+
+logOut 					- logOut.php
+
+===============================================================
+Admin Login 
+
+Admin Login Panel 		- adminLogin.php
+
+account 				- adminAccount.php
+
+profile
+	Admin profile 		- adminProfile.php
+	change password 	- adminChangePassword.php
+	add admin 			- adminAdd.php
+	view admin 			- adminView.php
+
+settings
+	add department		- adminAddDepartment.php
+	view department 	- adminViewDepartment.php
+	add treatment type 	- adminAddTreatment.php
+	view treatment type - adminViewTreatment.php
+	add medicine 		- adminAddMedicine.php
+	view medicine		- adminViewMedicine.php
+
+patient
+	add patient 		- userRegister.php
+	view patient records- doctorViewPatient.php
+
+appointment
+	//new appointment 	- appointment.php
+	view pending appointments - doctorPendingAppointment.php
+	view approved appointments - doctorApprovedAppointment.php
+
+treatment 				- doctorTreatmentRecord.php
+
+Doctor
+	//add doctor 			- doctor.php
+	//view doctor 		- Viewdoctor.php
+	add doctor timing 	- doctorAddTimings.php
+	view doctor timing 	- doctorViewTimings.php
