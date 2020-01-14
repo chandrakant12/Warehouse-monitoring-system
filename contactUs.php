@@ -10,6 +10,7 @@
 	
 		sendmail("yashikachinz1997@gmail.com","Mail from Appoint My Staff",$message);		
 	}
+	//comment
 ?>
 
 <div class="container">
