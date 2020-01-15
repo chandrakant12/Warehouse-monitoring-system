@@ -10,6 +10,7 @@ if(isset($_GET[delid]))
         echo "<script>alert('treatment deleted successfully..');</script>";
     }
 }
+//comment
 ?>
 
 <div class="container text-center">

@@ -3,11 +3,11 @@ include './includes/header.php';
 
 if(isset($_GET[delid]))
 {
-    $sql ="DELETE FROM doctor_timings WHERE doctor_timings_id='$_GET[delid]'";
+    $sql ="DELETE FROM staff_timings WHERE staff_timings_id='$_GET[delid]'";
     $qsql=mysqli_query($conn,$sql);
     if(mysqli_affected_rows($conn) == 1)
     {
-        echo "<script>alert('doctortimings record deleted successfully..');</script>";
+        echo "<script>alert('stafftimings record deleted successfully..');</script>";
     }
 }
 ?>
@@ -28,23 +28,23 @@ if(isset($_GET[delid]))
             </thead>
             <tbody>
                 <?php
-                $sql ="SELECT * FROM doctor_timings where doctorid='$_SESSION[doctorid]'";
+                $sql ="SELECT * FROM staff_timings where staffid='$_SESSION[staffid]'";
                 $qsql = mysqli_query($conn,$sql);
                 while($rs = mysqli_fetch_array($qsql))
                 {
-                    $sqldoctor = "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
-                    $qsqldoctor = mysqli_query($conn,$sqldoctor);
-                    $rsdoctor = mysqli_fetch_array($qsqldoctor);
+                    $sqlstaff = "SELECT * FROM staff WHERE staffid='$rs[staffid]'";
+                    $qsqlstaff = mysqli_query($conn,$sqlstaff);
+                    $rsstaff = mysqli_fetch_array($qsqlstaff);
 
-                    $sqldoct = "SELECT * FROM doctor_timings WHERE doctor_timings_id='$rs[doctor_timings_id]'";
+                    $sqldoct = "SELECT * FROM staff_timings WHERE staff_timings_id='$rs[staff_timings_id]'";
                     $qsqldoct = mysqli_query($conn,$sqldoct);
                     $rsdoct = mysqli_fetch_array($qsqldoct);
 
                     echo "<tr>
-                    <td>&nbsp;$rsdoctor[doctorname]</td>
+                    <td>&nbsp;$rsstaff[staffname]</td>
                     <td>&nbsp;$rsdoct[start_time] - $rsdoct[end_time]</td>
                     <td>&nbsp;$rs[status]</td>
-                    <td>&nbsp;<a href='doctortimings.php?editid=$rs[doctor_timings_id]'>Edit</a> | <a href='viewdoctortimings.php?delid=$rs[doctor_timings_id]'>Delete</a> </td>
+                    <td>&nbsp;<a href='stafftimings.php?editid=$rs[staff_timings_id]'>Edit</a> | <a href='viewstafftimings.php?delid=$rs[staff_timings_id]'>Delete</a> </td>
                     </tr>";
                 }
                 ?>

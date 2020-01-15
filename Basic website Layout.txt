@@ -3,7 +3,7 @@ Basic website
 home 		- index.php
 about us 	- aboutUs.php
 login 		- userLogin.php
-	forgot password 	- patientForgotPassword.php
+	forgot password 	- userForgotPassword.php
 registration- userRegister.php
 contact us	- contactUs.php
 
@@ -12,46 +12,46 @@ User Login
 
 account 	- userAccount.php
 appointment 
-	add appointment		- patientAppointment.php
-	view appointment	- patientViewAppointment.php
+	add appointment		- userAppointment.php
+	view appointment	- userViewAppointment.php
 profile
 	view profile		- userProfile.php
 	change password		- userChangePassword.php
 prescription
-	prescription record - patientViewPrescription.php
+	prescription record - userViewPrescription.php
 treatment
-	treatment record - patientTreatmentRecord.php
+	treatment record - userTreatmentRecord.php
 logout
 	logOut.php
 
 
 ======================================================
-Doctor login
+staff login
 
-Doctor login panel 		- msebLogin.php
+staff login panel 		- msebLogin.php
 
-account 				- doctorAccount.php
+account 				- staffAccount.php
 
 settings
-	Doctor profile		- doctorProfile.php
-	change password 	- doctorChangePassword.php
+	staff profile		- staffProfile.php
+	change password 	- staffChangePassword.php
 
 appointment
-	view pending appointments - doctorPendingAppointment.php
-	view approved appointments - doctorApprovedAppointment.php
+	view pending appointments - staffPendingAppointment.php
+	view approved appointments - staffApprovedAppointment.php
 
-patient
-	view patient 		- doctorViewPatient.php
+user
+	view user 		- staffViewuser.php
 
-doctor timings
-	add timings 		- doctorAddTimings.php 
-	view timings 		- doctorViewTimings.php
+staff timings
+	add timings 		- staffAddTimings.php 
+	view timings 		- staffViewTimings.php
 
 treatment
-	treatment records - doctorTreatmentRecord.php 
-	view treatment 		- doctorViewTreatment.php
+	treatment records - staffTreatmentRecord.php 
+	view treatment 		- staffViewTreatment.php
 
-income report			- doctorIncomeReport.php
+income report			- staffIncomeReport.php
 
 logOut 					- logOut.php
 
@@ -76,19 +76,19 @@ settings
 	add medicine 		- adminAddMedicine.php
 	view medicine		- adminViewMedicine.php
 
-patient
-	add patient 		- userRegister.php
-	view patient records- doctorViewPatient.php
+user
+	add user 		- userRegister.php
+	view user records- staffViewuser.php
 
 appointment
 	//new appointment 	- appointment.php
-	view pending appointments - doctorPendingAppointment.php
-	view approved appointments - doctorApprovedAppointment.php
+	view pending appointments - staffPendingAppointment.php
+	view approved appointments - staffApprovedAppointment.php
 
-treatment 				- doctorTreatmentRecord.php
+treatment 				- staffTreatmentRecord.php
 
-Doctor
-	//add doctor 			- doctor.php
-	//view doctor 		- Viewdoctor.php
-	add doctor timing 	- doctorAddTimings.php
-	view doctor timing 	- doctorViewTimings.php
+staff
+	//add staff 			- staff.php
+	//view staff 		- Viewstaff.php
+	add staff timing 	- staffAddTimings.php
+	view staff timing 	- staffViewTimings.php

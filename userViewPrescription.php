@@ -19,30 +19,30 @@
     <div class="container">
         <h4>View prescription record</h4>
         <?php
-        $sql ="SELECT * FROM prescription where patientid='$_SESSION[patientid]'";
+        $sql ="SELECT * FROM prescription where userid='$_SESSION[userid]'";
         $qsql = mysqli_query($conn,$sql);
         while($rs = mysqli_fetch_array($qsql))
         {
-            $sqlpatient = "SELECT * FROM user WHERE patientid='$rs[patientid]'";
-            $qsqlpatient = mysqli_query($conn,$sqlpatient);
-            $rspatient = mysqli_fetch_array($qsqlpatient);
+            $sqluser = "SELECT * FROM user WHERE userid='$rs[userid]'";
+            $qsqluser = mysqli_query($conn,$sqluser);
+            $rsuser = mysqli_fetch_array($qsqluser);
 
-            $sqldoctor = "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
-            $qsqldoctor = mysqli_query($conn,$sqldoctor);
-            $rsdoctor = mysqli_fetch_array($qsqldoctor);
+            $sqlstaff = "SELECT * FROM staff WHERE staffid='$rs[staffid]'";
+            $qsqlstaff = mysqli_query($conn,$sqlstaff);
+            $rsstaff = mysqli_fetch_array($qsqlstaff);
             ?>			
             <table class="table table-hover" width="200" border="3">
                 <tbody>
                     <tr>
-                        <td><strong>Doctor</strong></td>
+                        <td><strong>staff</strong></td>
                         <td><strong>User</strong></td>
                         <td><strong>Prescription Date</strong></td>
                         <td><strong>Status</strong></td>
                     </tr>
                     <?php
                     echo "<tr>
-                    <td>&nbsp;$rsdoctor[doctorname]</td>
-                    <td>&nbsp;$rspatient[patientname]</td>
+                    <td>&nbsp;$rsstaff[staffname]</td>
+                    <td>&nbsp;$rsuser[username]</td>
                     <td>&nbsp;$rs[prescriptiondate]</td>
                     <td>&nbsp;$rs[status]</td>
 

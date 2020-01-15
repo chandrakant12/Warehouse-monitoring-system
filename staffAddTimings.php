@@ -5,7 +5,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-		$sql ="UPDATE doctor_timings SET doctorid='$_POST[select2]',start_time='$_POST[ftime]',end_time='$_POST[ttime]',status='$_POST[select]'  WHERE doctor_timings_id='$_GET[editid]'";
+		$sql ="UPDATE staff_timings SET staffid='$_POST[select2]',start_time='$_POST[ftime]',end_time='$_POST[ttime]',status='$_POST[select]'  WHERE staff_timings_id='$_GET[editid]'";
 		if($qsql = mysqli_query($conn,$sql))
 		{
 			echo "<script>alert('Staff Timings record updated successfully...');</script>";
@@ -17,7 +17,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		$sql ="INSERT INTO doctor_timings(doctorid,start_time,end_time,status) values('$_POST[select2]','$_POST[ftime]','$_POST[ttime]','$_POST[select]')";
+		$sql ="INSERT INTO staff_timings(staffid,start_time,end_time,status) values('$_POST[select2]','$_POST[ftime]','$_POST[ttime]','$_POST[select]')";
 		if($qsql = mysqli_query($conn,$sql))
 		{
 			echo "<script>alert('Staff Timings record inserted successfully...');</script>";
@@ -30,7 +30,7 @@ if(isset($_POST[submit]))
 }
 if(isset($_GET[editid]))
 {
-	$sql="SELECT * FROM doctor_timings WHERE doctor_timings_id='$_GET[editid]' ";
+	$sql="SELECT * FROM staff_timings WHERE staff_timings_id='$_GET[editid]' ";
 	$qsql = mysqli_query($conn,$sql);
 	$rsedit = mysqli_fetch_array($qsql);
 
@@ -48,9 +48,9 @@ if(isset($_GET[editid]))
 			<table class="table" width="445" border="3">
 				<tbody>
 					<?php
-					if(isset($_SESSION[doctorid]))
+					if(isset($_SESSION[staffid]))
 					{
-						echo "<input type='hidden' name='select2' value='$_SESSION[doctorid]' >";
+						echo "<input type='hidden' name='select2' value='$_SESSION[staffid]' >";
 					}
 					else
 					{
@@ -61,17 +61,17 @@ if(isset($_GET[editid]))
 							<td width="66%"><select name="select2" id="select2">
 								<option value="">Select</option>
 								<?php
-								$sqldoctor= "SELECT * FROM doctor WHERE status='Active'";
-								$qsqldoctor = mysqli_query($conn,$sqldoctor);
-								while($rsdoctor = mysqli_fetch_array($qsqldoctor))
+								$sqlstaff= "SELECT * FROM staff WHERE status='Active'";
+								$qsqlstaff = mysqli_query($conn,$sqlstaff);
+								while($rsstaff = mysqli_fetch_array($qsqlstaff))
 								{
-									if($rsdoctor[doctorid] == $rsedit[doctorid])
+									if($rsstaff[staffid] == $rsedit[staffid])
 									{
-										echo "<option value='$rsdoctor[doctorid]' selected>$rsdoctor[doctorid] - $rsdoctor[doctorname]</option>";
+										echo "<option value='$rsstaff[staffid]' selected>$rsstaff[staffid] - $rsstaff[staffname]</option>";
 									}
 									else
 									{
-										echo "<option value='$rsdoctor[doctorid]'>$rsdoctor[doctorid] - $rsdoctor[doctorname]</option>";				
+										echo "<option value='$rsstaff[staffid]'>$rsstaff[staffid] - $rsstaff[staffname]</option>";				
 									}
 								}
 								?>

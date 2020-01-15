@@ -1,7 +1,7 @@
 <?php
 include './includes/header.php';
 
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION[userid]))
 {
 	echo "<script>window.location='userAccount.php';</script>";
 }

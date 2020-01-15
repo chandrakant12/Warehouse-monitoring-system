@@ -1,8 +1,8 @@
 <?php include'./includes/header.php' ;
 
-    if(isset($_SESSION[patientid]))
+    if(isset($_SESSION[userid]))
     {
-        $sql="SELECT * FROM user WHERE patientid='$_SESSION[patientid]' ";
+        $sql="SELECT * FROM user WHERE userid='$_SESSION[userid]' ";
         $qsql = mysqli_query($conn,$sql);
         $rsedit = mysqli_fetch_array($qsql);
     }
@@ -121,7 +121,7 @@
                 $deg = $data['degree'];
                 $email = $data['email_admin'];
             ?> -->
-            <h2>Hello <?php echo $rsedit[patientname]; ?></h2>
+            <h2>Hello <?php echo $rsedit[username]; ?></h2>
             <h4>Personal Details</h4>
             <h4>Date Of Birth : <?php echo $rsedit[dob]; ?></h4>
             <h4>Area : <?php echo $rsedit[address]; ?></h4>

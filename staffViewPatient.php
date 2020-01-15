@@ -3,11 +3,11 @@ include './includes/header.php';
 
 if(isset($_GET[delid]))
 {
-    $sql ="DELETE FROM user WHERE patientid='$_GET[delid]'";
+    $sql ="DELETE FROM user WHERE userid='$_GET[delid]'";
     $qsql=mysqli_query($conn,$sql);
     if(mysqli_affected_rows($conn) == 1)
     {
-        echo "<script>alert('patient record deleted successfully..');</script>";
+        echo "<script>alert('user record deleted successfully..');</script>";
     }
 }
 ?>
@@ -43,7 +43,7 @@ if(isset($_GET[delid]))
                     while($rs = mysqli_fetch_array($qsql))
                     {
                         echo "<tr>
-                        <td>$rs[patientname]<br>
+                        <td>$rs[username]<br>
                         <strong>Login ID :</strong> $rs[loginid] <br> <strong>Status </strong>: $rs[status] </td>
                         <td>
                         <strong>Date</strong>: $rs[admissiondate]<br>
@@ -58,8 +58,8 @@ if(isset($_GET[delid]))
                         
                         if(isset($_SESSION[adminid]))
                         {
-                            echo "<a class=\"btn-sm white-text purple-gradient\" href='patient.php?editid=$rs[patientid]'>Edit</a> | <a class=\"btn-sm white-text purple-gradient\" href='viewpatient.php?delid=$rs[patientid]'>Delete</a> <hr>
-                            <a class=\"btn-sm white-text purple-gradient\" href='patientreport.php?patientid=$rs[patientid]'>View Report</a>";
+                            echo "<a class=\"btn-sm white-text purple-gradient\" href='user.php?editid=$rs[userid]'>Edit</a> | <a class=\"btn-sm white-text purple-gradient\" href='viewuser.php?delid=$rs[userid]'>Delete</a> <hr>
+                            <a class=\"btn-sm white-text purple-gradient\" href='userreport.php?userid=$rs[userid]'>View Report</a>";
                         }
                         echo "</td>
                         -->

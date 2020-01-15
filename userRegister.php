@@ -7,7 +7,7 @@
 	{
 		if(isset($_GET[editid]))
 		{
-			$sql ="UPDATE user SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE patientid='$_GET[editid]'";
+			$sql ="UPDATE user SET username='$_POST[username]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE userid='$_GET[editid]'";
 			
 			if($qsql = mysqli_query($conn,$sql))
 			{
@@ -21,7 +21,7 @@
 		else
 		{	
 			
-			$sql ="INSERT INTO user(patientname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[patientname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+			$sql ="INSERT INTO user(username,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[username]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
 			if($qsql = mysqli_query($conn,$sql))
 			{
 				echo "<script>alert('record inserted successfully...');</script>";
@@ -43,7 +43,7 @@
 	}
 
 	if(isset($_GET[editid])){
-		$sql="SELECT * FROM user WHERE patientid='$_GET[editid]' ";
+		$sql="SELECT * FROM user WHERE userid='$_GET[editid]' ";
 		$qsql = mysqli_query($conn,$sql);
 		$rsedit = mysqli_fetch_array($qsql);	
 	}
@@ -65,13 +65,13 @@
 					<div class="container text-center">
 						<br>
 
-						<form method="post" action="" name="frmpatient" onSubmit="return validateform()">
+						<form method="post" action="" name="frmuser" onSubmit="return validateform()">
 							<table class="form-group" style="width:100%; ">
 								<div >
 									<tbody>
 										<tr class="">
 											<td width="20%">Name : </td>
-											<td width="80%"><input class="form-control" type="text" name="patientname" id="patientname"  value="<?php echo $rsedit[patientname]; ?>"/></td>
+											<td width="80%"><input class="form-control" type="text" name="username" id="username"  value="<?php echo $rsedit[username]; ?>"/></td>
 										</tr>
 
 										<?php
@@ -201,176 +201,176 @@
 	function validateform()
 	{
 
-		if(document.frmpatient.patientname.value == "")
+		if(document.frmuser.username.value == "")
 		{
 			alert("User name should not be empty..");
-			document.frmpatient.patientname.focus();
+			document.frmuser.username.focus();
 
 			return false;
 		}
-		else if(!document.frmpatient.patientname.value.match(alphaspaceExp))
+		else if(!document.frmuser.username.value.match(alphaspaceExp))
 		{
 			alert("User name not valid..");
-			document.frmpatient.patientname.focus();
+			document.frmuser.username.focus();
 			return false;
 		}
 		/*
-		else if(document.frmpatient.admissiondate.value == "")
+		else if(document.frmuser.admissiondate.value == "")
 		{
 			alert("Admission date should not be empty..");
-			document.frmpatient.admissiondate.focus();
+			document.frmuser.admissiondate.focus();
 			return false;
 		}
-		else if(document.frmpatient.admissiontme.value == "")
+		else if(document.frmuser.admissiontme.value == "")
 		{
 			alert("Admission time should not be empty..");
-			document.frmpatient.admissiontme.focus();
+			document.frmuser.admissiontme.focus();
 			return false;
 		}*/
-		else if(document.frmpatient.address.value == "")
+		else if(document.frmuser.address.value == "")
 		{
 			alert("Address should not be empty..");
-			document.frmpatient.address.focus();
+			document.frmuser.address.focus();
 			return false;
 		}
-		else if(document.frmpatient.mobilenumber.value == "")
+		else if(document.frmuser.mobilenumber.value == "")
 		{
 			alert("Mobile number should not be empty..");
-			document.frmpatient.mobilenumber.focus();
+			document.frmuser.mobilenumber.focus();
 			return false;
 		}
-		else if(!document.frmpatient.mobilenumber.value.match(numericExpression))
+		else if(!document.frmuser.mobilenumber.value.match(numericExpression))
 		{
 			alert("Mobile number not valid..");
-			document.frmpatient.mobilenumber.focus();
+			document.frmuser.mobilenumber.focus();
 			return false;
 		}
-		else if(document.frmpatient.mobilenumber.value.length != 10	)
+		else if(document.frmuser.mobilenumber.value.length != 10	)
 		{
 			alert("Mobile number should be 10 digits..");
-			document.frmpatient.mobilenumber.focus();
+			document.frmuser.mobilenumber.focus();
 			return false;
 		}
-		// else if(document.frmpatient.mobilenumber.value.length > 15	)
+		// else if(document.frmuser.mobilenumber.value.length > 15	)
 		// {
 		// 	alert("Mobile number should not be greater than 15 digits..");
-		// 	document.frmpatient.mobilenumber.focus();
+		// 	document.frmuser.mobilenumber.focus();
 		// 	return false;
 		// }
-		else if(document.frmpatient.city.value == "")
+		else if(document.frmuser.city.value == "")
 		{
 			alert("City should not be empty..");
-			document.frmpatient.city.focus();
+			document.frmuser.city.focus();
 			return false;
 		}
-		else if(!document.frmpatient.city.value.match(alphaspaceExp))
+		else if(!document.frmuser.city.value.match(alphaspaceExp))
 		{
 			alert("City not valid..");
-			document.frmpatient.city.focus();
+			document.frmuser.city.focus();
 			return false;
 		}
-		else if(document.frmpatient.pincode.value == "")
+		else if(document.frmuser.pincode.value == "")
 		{
 			alert("Pincode should not be empty..");
-			document.frmpatient.pincode.focus();
+			document.frmuser.pincode.focus();
 			return false;
 		}
-		else if(document.frmpatient.pincode.value.length != 6)
+		else if(document.frmuser.pincode.value.length != 6)
 		{
 			alert("Pincode is 6 digit..");
-			document.frmpatient.pincode.focus();
+			document.frmuser.pincode.focus();
 			return false;
 		}
-		else if(!document.frmpatient.pincode.value.match(numericExpression))
+		else if(!document.frmuser.pincode.value.match(numericExpression))
 		{
 			alert("Pincode not valid..");
-			document.frmpatient.pincode.focus();
+			document.frmuser.pincode.focus();
 			return false;
 		}
-		else if(document.frmpatient.loginid.value == "")
+		else if(document.frmuser.loginid.value == "")
 		{
 			alert("Login ID should not be empty..");
-			document.frmpatient.loginid.focus();
+			document.frmuser.loginid.focus();
 			return false;
 		}
-		else if(!document.frmpatient.loginid.value.match(alphanumericExp))
+		else if(!document.frmuser.loginid.value.match(alphanumericExp))
 		{
 			alert("Login ID not valid..");
-			document.frmpatient.loginid.focus();
+			document.frmuser.loginid.focus();
 			return false;
 		}
-		else if(document.frmpatient.password.value == "")
+		else if(document.frmuser.password.value == "")
 		{
 			alert("Password should not be empty..");
-			document.frmpatient.password.focus();
+			document.frmuser.password.focus();
 			return false;
 		}
-		else if(document.frmpatient.password.value.length < 8)
+		else if(document.frmuser.password.value.length < 8)
 		{
 			alert("Password length should be more than 8 characters...");
-			document.frmpatient.password.focus();
+			document.frmuser.password.focus();
 			return false;
 		}
 
-		else if(!document.frmpatient.password.value.match(lowerCaseLetters)) 
+		else if(!document.frmuser.password.value.match(lowerCaseLetters)) 
 		{
 			alert("Password must contain Lower case Letters ...");
-			document.frmpatient.password.focus();
+			document.frmuser.password.focus();
 			return false;
 		}
 
-		else if(!document.frmpatient.password.value.match(upperCaseLetters)) 
+		else if(!document.frmuser.password.value.match(upperCaseLetters)) 
 		{
 			alert("Password must contain at least 1 Upper case Letter ...");
-			document.frmpatient.password.focus();
+			document.frmuser.password.focus();
 			return false;
 		}
 
-		else if(!document.frmpatient.password.value.match(numbers)) 
+		else if(!document.frmuser.password.value.match(numbers)) 
 		{
 			alert("Password must contain numeric values ...");
-			document.frmpatient.password.focus();
+			document.frmuser.password.focus();
 			return false;
 		}
 		/*
-		else if(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', document.frmpatient.password.value)){
+		else if(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', document.frmuser.password.value)){
         	alert("password should contain atleast one special character");
-        	document.frmpatient.password.focus();
+        	document.frmuser.password.focus();
         	return false;
     	}*/
-		else if(!document.frmpatient.password.value.match(regularExpression)) {
+		else if(!document.frmuser.password.value.match(regularExpression)) {
         	alert("password should contain atleast one special character");
-        	document.frmpatient.password.focus();
+        	document.frmuser.password.focus();
         	return false;
     	}
-		else if(document.frmpatient.password.value != document.frmpatient.confirmpassword.value )
+		else if(document.frmuser.password.value != document.frmuser.confirmpassword.value )
 		{
 			alert("Password and confirm password should be equal..");
-			document.frmpatient.confirmpassword.focus();
+			document.frmuser.confirmpassword.focus();
 			return false;
 		}
-		else if(document.frmpatient.select2.value == "")
+		else if(document.frmuser.select2.value == "")
 		{
 			alert("Blood Group should not be empty..");
-			document.frmpatient.select2.focus();
+			document.frmuser.select2.focus();
 			return false;
 		}
-		else if(document.frmpatient.select3.value == "")
+		else if(document.frmuser.select3.value == "")
 		{
 			alert("Gender should not be empty..");
-			document.frmpatient.select3.focus();
+			document.frmuser.select3.focus();
 			return false;
 		}
-		else if(document.frmpatient.dateofbirth.value == "")
+		else if(document.frmuser.dateofbirth.value == "")
 		{
 			alert("Date Of Birth should not be empty..");
-			document.frmpatient.dateofbirth.focus();
+			document.frmuser.dateofbirth.focus();
 			return false;
 		}
-		else if(document.frmpatient.select.value == "" )
+		else if(document.frmuser.select.value == "" )
 		{
 			alert("Kindly select the status..");
-			document.frmpatient.select.focus();
+			document.frmuser.select.focus();
 			return false;
 		}
 		else

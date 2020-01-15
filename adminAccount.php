@@ -112,14 +112,14 @@ if(!isset($_SESSION[adminid]))
 					</h4>
 					<h4>Number of Staff Records : 
 						<?php
-						$sql = "SELECT * FROM doctor WHERE status='Active' ";
+						$sql = "SELECT * FROM staff WHERE status='Active' ";
 						$qsql = mysqli_query($conn,$sql);
 						echo mysqli_num_rows($qsql);
 						?>
 					</h4>
 					<!-- <h4>Number of Staff Timings Records : 
 						<?php
-						$sql = "SELECT * FROM doctor_timings WHERE status='Active'";
+						$sql = "SELECT * FROM staff_timings WHERE status='Active'";
 						$qsql = mysqli_query($conn,$sql);
 						echo mysqli_num_rows($qsql);
 						?>
