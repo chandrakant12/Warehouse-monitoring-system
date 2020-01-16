@@ -226,10 +226,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="userElectricityStatus.php">Electricity Status</a>
                     </li>
-                    <!--
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="userAnalytics.php">Analytics</a>
-                    </li>-->
+                    </li>
                 </ul>
 
                 <a href="logOut.php"><button class="btn heavy-rain-gradient btn-outline-success my-2 my-sm-0">Log Out</button></a>
