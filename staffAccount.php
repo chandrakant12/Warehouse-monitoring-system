@@ -2,7 +2,7 @@
 
 include './includes/header.php';  
 
-if(!isset($_SESSION[doctorid]))
+if(!isset($_SESSION[staffid]))
 {
     echo "<script>window.location='msebLogin.php';</script>";
 }
@@ -13,7 +13,7 @@ if(!isset($_SESSION[doctorid]))
     <h4>Staff Account</h4>
     <br>
     <div class="container">
-        <h3>Welcome <?php echo $rsdoctorprofile[doctorname]; ?> </h3>
+        <h3>Welcome <?php echo $rsstaffprofile[staffname]; ?> </h3>
         <h3>Number of Appointment Records : 
             <?php
             $sql = "SELECT * FROM appointment WHERE status='Active'";

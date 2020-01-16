@@ -299,7 +299,7 @@
                             <div class="card-header-tab card-header">
                                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
                                     <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
-                                    Transformer Performance
+                                    warehouse Performance
                                 </div>
 
                             </div>
@@ -312,7 +312,7 @@
                                                 <img style="width: 55px;" src="https://img.icons8.com/clouds/100/000000/slot-machine.png">
                                             </i></div>
                                         <div class="widget-chart-content">
-                                            <div class="widget-subheading">Transformer Repairs</div>
+                                            <div class="widget-subheading">warehouse Repairs</div>
                                             <div class="widget-numbers">NO</div>
                                             <!-- <div class="widget-description opacity-8 text-focus">
                                                 <div class="d-inline text-danger pr-1">
@@ -429,7 +429,7 @@
 
 
                                             <?php
-                                            $sql ="SELECT * FROM doctor";
+                                            $sql ="SELECT * FROM staff";
                                             $qsql = mysqli_query($conn,$sql);
                                             while($rs = mysqli_fetch_array($qsql))
                                             {
@@ -437,7 +437,7 @@
                                                 <td>
                                                 <strong><strong> Stat </strong>: $rs[status] </td>
                                                 <td>
-                                                <strong> <strong>$rs[doctorname]</strong></strong>
+                                                <strong> <strong>$rs[staffname]</strong></strong>
                                                 </td>
                                                 <td>
                                                 <strong>Mob No</strong> : $rs[mobileno]</td>

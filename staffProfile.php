@@ -2,12 +2,12 @@
 include './includes/header.php';
 if(isset($_POST[submit]))
 {
-	if(isset($_SESSION[doctorid]))
+	if(isset($_SESSION[staffid]))
 	{
-		$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_SESSION[doctorid]'";
+		$sql ="UPDATE staff SET staffname='$_POST[staffname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE staffid='$_SESSION[staffid]'";
 		if($qsql = mysqli_query($conn,$sql))
 		{
-			echo "<script>alert('Doctor profile updated successfully...');</script>";
+			echo "<script>alert('staff profile updated successfully...');</script>";
 		}
 		else
 		{
@@ -16,10 +16,10 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		$sql ="INSERT INTO doctor(doctorname,mobileno,departmentid,loginid,password,status,education,experience) values('$_POST[doctorname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','$_POST[select]','$_POST[education]','$_POST[experience]')";
+		$sql ="INSERT INTO staff(staffname,mobileno,departmentid,loginid,password,status,education,experience) values('$_POST[staffname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','$_POST[select]','$_POST[education]','$_POST[experience]')";
 		if($qsql = mysqli_query($conn,$sql))
 		{
-			echo "<script>alert('Doctor record inserted successfully...');</script>";
+			echo "<script>alert('staff record inserted successfully...');</script>";
 		}
 		else
 		{
@@ -27,9 +27,9 @@ if(isset($_POST[submit]))
 		}
 	}
 }
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION[staffid]))
 {
-	$sql="SELECT * FROM doctor WHERE doctorid='$_SESSION[doctorid]' ";
+	$sql="SELECT * FROM staff WHERE staffid='$_SESSION[staffid]' ";
 	$qsql = mysqli_query($conn,$sql);
 	$rsedit = mysqli_fetch_array($qsql);	
 }
@@ -48,7 +48,7 @@ if(isset($_SESSION[doctorid]))
 				<tbody class="table">
 					<tr>
 						<td width="34%">Staff Name</td>
-						<td width="66%"><input type="text" name="doctorname" id="doctorname" value="<?php echo $rsedit[doctorname]; ?>" /></td>
+						<td width="66%"><input type="text" name="staffname" id="staffname" value="<?php echo $rsedit[staffname]; ?>" /></td>
 					</tr>
 					<tr>
 						<td>Mobile Number</td>
@@ -115,16 +115,16 @@ var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; //Variable t
 
 function validateform()
 {
-	if(document.frmdoctprfl.doctorname.value == "")
+	if(document.frmdoctprfl.staffname.value == "")
 	{
 		alert("Staff name should not be empty..");
-		document.frmdoctprfl.doctorname.focus();
+		document.frmdoctprfl.staffname.focus();
 		return false;
 	}
-	else if(!document.frmdoctprfl.doctorname.value.match(alphaspaceExp))
+	else if(!document.frmdoctprfl.staffname.value.match(alphaspaceExp))
 	{
 		alert("Staff name not valid..");
-		document.frmdoctprfl.doctorname.focus();
+		document.frmdoctprfl.staffname.focus();
 		return false;
 	}
 	else if(document.frmdoctprfl.mobilenumber.value == "")

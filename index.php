@@ -28,7 +28,7 @@
 <div class="jumbotron jumbo text-center" style="margin-bottom:0">
     <div class="row">
         <div class="col-4 text-left">
-            <img class="img-fluid" src="./images/logo_main.jpg">
+            <img class="img-fluid" src="./images/cwc_logo.jpg">
         </div>
         <div class="col-8 text-right ">
             <h1 class="heading-text">Maharashtra State Electricity Distribution Co. Ltd.</h1>

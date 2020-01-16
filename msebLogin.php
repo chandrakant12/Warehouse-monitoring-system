@@ -1,19 +1,19 @@
 <?php
 include './includes/header.php';
 
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION[staffid]))
 {
-	echo "<script>window.location='doctoraccount.php';</script>";
+	echo "<script>window.location='staffaccount.php';</script>";
 }
 if(isset($_POST[submit]))
 {
-	$sql = "SELECT * FROM doctor WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'";
+	$sql = "SELECT * FROM staff WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'";
 	$qsql = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($qsql) == 1)
 	{
 		$rslogin = mysqli_fetch_array($qsql);
-		$_SESSION[doctorid]= $rslogin[doctorid] ;
-		echo "<script>window.location='doctoraccount.php';</script>";
+		$_SESSION[staffid]= $rslogin[staffid] ;
+		echo "<script>window.location='staffaccount.php';</script>";
 	}
 	else
 	{

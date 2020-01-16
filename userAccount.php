@@ -1,19 +1,19 @@
 <?php    include './includes/header.php'; ?>
 <?php 
 
-    if(!isset($_SESSION[patientid]))
+    if(!isset($_SESSION[userid]))
     {
         echo "<script>window.location='userLogin.php';</script>";
     }
 
 
-    $sqlpatient = "SELECT * FROM user WHERE patientid='$_SESSION[patientid]' ";
-    $qsqlpatient = mysqli_query($conn,$sqlpatient);
-    $rspatient = mysqli_fetch_array($qsqlpatient);
+    $sqluser = "SELECT * FROM user WHERE userid='$_SESSION[userid]' ";
+    $qsqluser = mysqli_query($conn,$sqluser);
+    $rsuser = mysqli_fetch_array($qsqluser);
 
-    $sqlpatientappointment = "SELECT * FROM appointment WHERE patientid='$_SESSION[patientid]' ";
-    $qsqlpatientappointment = mysqli_query($conn,$sqlpatientappointment);
-    $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
+    $sqluserappointment = "SELECT * FROM appointment WHERE userid='$_SESSION[userid]' ";
+    $qsqluserappointment = mysqli_query($conn,$sqluserappointment);
+    $rsuserappointment = mysqli_fetch_array($qsqluserappointment);
 ?>
 
 <br>
@@ -21,13 +21,13 @@
     <h2>User Account</h2>
 </div>
 <div class="container">
-    <h4>This account is registered under <?php echo $rspatient[patientname]; ?> </h4>
-    <h4>You have Registered on <?php echo $rspatient[admissiondate]; ?> <?php echo $rspatient[admissiontime]; ?></h4>
+    <h4>This account is registered under <?php echo $rsuser[username]; ?> </h4>
+    <h4>You have Registered on <?php echo $rsuser[admissiondate]; ?> <?php echo $rsuser[admissiontime]; ?></h4>
 
 
     <!--
     <?php
-    if(mysqli_num_rows($qsqlpatientappointment) == 0)
+    if(mysqli_num_rows($qsqluserappointment) == 0)
     {
         ?>
         <h4>Appointment records not found.. </h4>
@@ -36,7 +36,7 @@
     else
     {
         ?>    
-        <h4>Last Appointment taken on - <?php echo $rspatientappointment[appointmentdate]; ?> <?php echo $rspatientappointment[appointmenttime]; ?> </h4>
+        <h4>Last Appointment taken on - <?php echo $rsuserappointment[appointmentdate]; ?> <?php echo $rsuserappointment[appointmenttime]; ?> </h4>
         <?php
     }
     ?>  

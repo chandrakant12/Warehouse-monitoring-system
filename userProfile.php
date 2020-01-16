@@ -3,7 +3,7 @@
 
 	if(isset($_POST[submit]))
 	{
-		$sql ="UPDATE user SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE patientid='$_SESSION[patientid]'";
+		$sql ="UPDATE user SET username='$_POST[username]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE userid='$_SESSION[userid]'";
 		if($qsql = mysqli_query($conn,$sql))
 		{
 			echo "<script>alert('User record updated successfully...');</script>";
@@ -13,9 +13,9 @@
 			echo mysqli_error($conn);
 		}
 	}
-	if(isset($_SESSION[patientid]))
+	if(isset($_SESSION[userid]))
 	{
-		$sql="SELECT * FROM user WHERE patientid='$_SESSION[patientid]' ";
+		$sql="SELECT * FROM user WHERE userid='$_SESSION[userid]' ";
 		$qsql = mysqli_query($conn,$sql);
 		$rsedit = mysqli_fetch_array($qsql);
 	}
@@ -31,7 +31,7 @@
 					<tbody >
 						<tr>
 							<td width="30%">User Name</td>
-							<td width="60%"><input class="form-control" type="text" name="patientname" id="patientname"  value="<?php echo $rsedit[patientname]; ?>"/></td>
+							<td width="60%"><input class="form-control" type="text" name="username" id="username"  value="<?php echo $rsedit[username]; ?>"/></td>
 						</tr>
 						<tr>
 							<td>Admission Date</td>
@@ -128,16 +128,16 @@
 
 	function validateform()
 	{
-		if(document.frmpatprfl.patientname.value == "")
+		if(document.frmpatprfl.username.value == "")
 		{
 			alert("User name should not be empty..");
-			document.frmpatprfl.patientname.focus();
+			document.frmpatprfl.username.focus();
 			return false;
 		}
-		else if(!document.frmpatprfl.patientname.value.match(alphaspaceExp))
+		else if(!document.frmpatprfl.username.value.match(alphaspaceExp))
 		{
 			alert("User name not valid..");
-			document.frmpatprfl.patientname.focus();
+			document.frmpatprfl.username.focus();
 			return false;
 		}
 		else if(document.frmpatprfl.admissiondate.value == "")

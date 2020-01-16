@@ -47,12 +47,12 @@
             </li>        
             
             <?php
-            if(!isset($_SESSION[patientid]))
+            if(!isset($_SESSION[userid]))
             {
                 ?>        
                 <!--
                 <li class="nav-item">
-                    <a class="nav-link" href="patientAppointment.php">Online Appointment</a>
+                    <a class="nav-link" href="userAppointment.php">Online Appointment</a>
                 </li>
                 -->
                 <li class="nav-item">
@@ -68,12 +68,12 @@
             
                 <?php
             }
-            else if (isset($_SESSION[patientid]))
+            else if (isset($_SESSION[userid]))
             {
                 ?>
                 <!--
                 <li class="nav-item">
-                    <a class="nav-link" href="patientAppointment.php">Online Appointment</a>
+                    <a class="nav-link" href="userAppointment.php">Online Appointment</a>
                 </li>
                 -->
                 <?php

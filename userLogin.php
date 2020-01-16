@@ -3,7 +3,7 @@
 <?php
 
 
-	if(isset($_SESSION[patientid]))
+	if(isset($_SESSION[userid]))
 	{
 		echo "<script>window.location='userAccount.php';</script>";
 	}
@@ -15,7 +15,7 @@
 		if(mysqli_num_rows($qsql) >= 1)
 		{
 			$rslogin = mysqli_fetch_array($qsql);
-			$_SESSION[patientid]= $rslogin[patientid] ;
+			$_SESSION[userid]= $rslogin[userid] ;
 			echo "<script>window.location='userAccount.php';</script>";
 		}
 		else
@@ -79,7 +79,7 @@
 							New user <a href="userRegister.php">Click Here</a> to Register 
 						</strong>
 						<br>
-						<a href="patientForgotPassword.php"><strong>Forgot Password</strong></a>
+						<a href="userForgotPassword.php"><strong>Forgot Password</strong></a>
 					</div>
 				</form>
 				<p>&nbsp;</p>

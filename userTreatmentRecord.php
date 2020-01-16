@@ -33,22 +33,22 @@ if(isset($_GET[delid]))
 				<tbody>
 					<?php
 					$sql ="SELECT * FROM treatment_records where status='Active'";
-					if(isset($_SESSION[patientid]))
+					if(isset($_SESSION[userid]))
 					{
-						$sql = $sql . " AND patientid='$_SESSION[patientid]'"; 
+						$sql = $sql . " AND userid='$_SESSION[userid]'"; 
 					}
-					if(isset($_SESSION[doctorid]))
+					if(isset($_SESSION[staffid]))
 					{
-						$sql = $sql . " AND doctorid='$_SESSION[doctorid]'";
+						$sql = $sql . " AND staffid='$_SESSION[staffid]'";
 					}
 					$qsql = mysqli_query($conn,$sql);
 					while($rs = mysqli_fetch_array($qsql))
 					{
-						$sqlpat = "SELECT * FROM user WHERE patientid='$rs[patientid]'";
+						$sqlpat = "SELECT * FROM user WHERE userid='$rs[userid]'";
 						$qsqlpat = mysqli_query($conn,$sqlpat);
 						$rspat = mysqli_fetch_array($qsqlpat);
 
-						$sqldoc= "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
+						$sqldoc= "SELECT * FROM staff WHERE staffid='$rs[staffid]'";
 						$qsqldoc = mysqli_query($conn,$sqldoc);
 						$rsdoc = mysqli_fetch_array($qsqldoc);
 
@@ -58,8 +58,8 @@ if(isset($_GET[delid]))
 
 						echo "<tr>
 						<td>&nbsp;$rstreatment[treatmenttype]</td>
-						<td>&nbsp;$rspat[patientname]</td>
-						<td>&nbsp;$rsdoc[doctorname]</td>
+						<td>&nbsp;$rspat[username]</td>
+						<td>&nbsp;$rsdoc[staffname]</td>
 						<td>&nbsp;$rs[treatment_description]</td>
 						<td>&nbsp;$rs[treatment_date]</td>
 						<td>&nbsp;$rs[treatment_time]</td>";  

@@ -1,9 +1,9 @@
 TABLE
-patient = >user;
+user = >user;
 
 
 
 Variable
-Doctor - Staff
+staff - Staff
 
 

@@ -49,14 +49,14 @@ if(isset($_GET[approveid]))
 				<tbody>
 					<?php
 					$sql ="SELECT * FROM appointment WHERE (status !='')";
-					if(isset($_SESSION[patientid]))
+					if(isset($_SESSION[userid]))
 					{
-						$sql  = $sql . " AND patientid='$_SESSION[patientid]'";
+						$sql  = $sql . " AND userid='$_SESSION[userid]'";
 					}
 					$qsql = mysqli_query($conn,$sql);
 					while($rs = mysqli_fetch_array($qsql))
 					{
-						$sqlpat = "SELECT * FROM user WHERE patientid='$rs[patientid]'";
+						$sqlpat = "SELECT * FROM user WHERE userid='$rs[userid]'";
 						$qsqlpat = mysqli_query($conn,$sqlpat);
 						$rspat = mysqli_fetch_array($qsqlpat);
 
@@ -65,20 +65,20 @@ if(isset($_GET[approveid]))
 						$qsqldept = mysqli_query($conn,$sqldept);
 						$rsdept = mysqli_fetch_array($qsqldept);
 
-						$sqldoc= "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
+						$sqldoc= "SELECT * FROM staff WHERE staffid='$rs[staffid]'";
 						$qsqldoc = mysqli_query($conn,$sqldoc);
 						$rsdoc = mysqli_fetch_array($qsqldoc);
 						echo "<tr>
-						<td>$rspat[patientname]<br>$rspat[mobileno]</td>		 
+						<td>$rspat[username]<br>$rspat[mobileno]</td>		 
 						<td>" . date("d-M-Y",strtotime($rs[appointmentdate])) . "  " . date("H:i A",strtotime($rs[appointmenttime])) . "</td> 
 						<td>$rsdept[departmentname]</td>
-						<td>$rsdoc[doctorname]</td>
+						<td>$rsdoc[staffname]</td>
 						<td>$rs[app_reason]</td>
 						<td>$rs[status]</td>
 						<td><div class='btn aqua-gradient btn-rounded btn-sm' align='center'>";
 						if($rs[status] != "Approved")
 						{
-							if(!(isset($_SESSION[patientid])))
+							if(!(isset($_SESSION[userid])))
 							{
 								echo "<a href='appointmentapproval.php?editid=$rs[appointmentid]'>Approve</a><hr>";
 							}
@@ -86,7 +86,7 @@ if(isset($_GET[approveid]))
 						}
 						else
 						{
-							echo "<a href='patientreport.php?patientid=$rs[patientid]&appointmentid=$rs[appointmentid]'>View Report</a>";
+							echo "<a href='userreport.php?userid=$rs[userid]&appointmentid=$rs[appointmentid]'>View Report</a>";
 						}
 						echo "</center></td></tr>";
 					}

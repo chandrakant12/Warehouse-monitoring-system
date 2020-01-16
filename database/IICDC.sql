@@ -71,18 +71,18 @@ CREATE TABLE `department` (
 INSERT INTO `department` (`departmentid`, `departmentname`, `description`, `status`) VALUES
 (46, 'Clerk', 'Does all the paper work related to the office documents', 'Active'),
 (47, 'Accountants', 'Does all the managing of the money', 'Active'),
-(90, 'Technicians', 'Looks for the problems in the poles and transformer.', 'Active'),
+(90, 'Technicians', 'Looks for the problems in the poles and warehouse.', 'Active'),
 (91, 'testDepartment', 'test', 'Active');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctor`
+-- Table structure for table `staff`
 --
 
-CREATE TABLE `doctor` (
-  `doctorid` int(10) NOT NULL,
-  `doctorname` varchar(50) NOT NULL,
+CREATE TABLE `staff` (
+  `staffid` int(10) NOT NULL,
+  `staffname` varchar(50) NOT NULL,
   `mobileno` varchar(15) NOT NULL,
   `departmentid` int(10) NOT NULL,
   `loginid` varchar(25) NOT NULL,
@@ -94,26 +94,26 @@ CREATE TABLE `doctor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `doctor`
+-- Dumping data for table `staff`
 --
 
-INSERT INTO `doctor` (`doctorid`, `doctorname`, `mobileno`, `departmentid`, `loginid`, `password`, `status`, `education`, `experience`, `consultancy_charge`) VALUES
-(44, 'Sai kiran', '8548874216', 20, 'doctor9', '123456789', 'Active', 'BAMS', 5.0, 50.00),
+INSERT INTO `staff` (`staffid`, `staffname`, `mobileno`, `departmentid`, `loginid`, `password`, `status`, `education`, `experience`, `consultancy_charge`) VALUES
+(44, 'Sai kiran', '8548874216', 20, 'staff9', '123456789', 'Active', 'BAMS', 5.0, 50.00),
 (45, 'Mahesh', '9985633225', 11, 'maheshkrishna', '123456789', 'Active', 'MBBS', 5.0, 200.00),
 (46, 'Rupesh kumar', '889655884', 12, 'rupesh', '123456789', 'Active', 'MBBS', 5.0, 250.00),
 (47, 'Parthiv patel', '99855896633', 12, 'parthiv', '77896541230', 'Active', 'MBBS', 7.0, 600.00),
 (61, 'vidya', '986555566', 5, '8553507260', '876867888', 'active', 'ufyhfhjkl', 3.0, 3.00),
-(90, 'Lokesh Kumar Chopra', '9812453678', 11, 'doctor', '123456789', 'Active', 'MBBS,MD,IDCCM', 7.0, 700.00);
+(90, 'Lokesh Kumar Chopra', '9812453678', 11, 'staff', '123456789', 'Active', 'MBBS,MD,IDCCM', 7.0, 700.00);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctor_timings`
+-- Table structure for table `staff_timings`
 --
 
-CREATE TABLE `doctor_timings` (
-  `doctor_timings_id` int(10) NOT NULL,
-  `doctorid` int(10) NOT NULL,
+CREATE TABLE `staff_timings` (
+  `staff_timings_id` int(10) NOT NULL,
+  `staffid` int(10) NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `available_day` varchar(15) NOT NULL,
@@ -121,10 +121,10 @@ CREATE TABLE `doctor_timings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `doctor_timings`
+-- Dumping data for table `staff_timings`
 --
 
-INSERT INTO `doctor_timings` (`doctor_timings_id`, `doctorid`, `start_time`, `end_time`, `available_day`, `status`) VALUES
+INSERT INTO `staff_timings` (`staff_timings_id`, `staffid`, `start_time`, `end_time`, `available_day`, `status`) VALUES
 (17, 35, '09:30:00', '13:00:00', '', 'Active'),
 (18, 36, '13:30:00', '17:00:00', '', 'Active'),
 (19, 37, '14:00:00', '18:00:00', '', 'Active'),
@@ -148,8 +148,8 @@ INSERT INTO `doctor_timings` (`doctor_timings_id`, `doctorid`, `start_time`, `en
 --
 
 CREATE TABLE `user` (
-  `patientid` int(10) NOT NULL,
-  `patientname` varchar(50) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `admissiondate` date NOT NULL,
   `admissiontime` time NOT NULL,
   `address` varchar(250) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`patientid`, `patientname`, `admissiondate`, `admissiontime`, `address`, `mobileno`, `city`, `pincode`, `loginid`, `password`, `bloodgroup`, `gender`, `dob`, `status`) VALUES
+INSERT INTO `user` (`userid`, `username`, `admissiondate`, `admissiontime`, `address`, `mobileno`, `city`, `pincode`, `loginid`, `password`, `bloodgroup`, `gender`, `dob`, `status`) VALUES
 (57, 'Peter king', '2018-07-12', '21:07:50', ' st house,\r\nsunkadakatte,\r\nbangalore', '88569525445', 'Bangalore', '575002', 'aditya', 'adityamahajan1', 'A+', 'MALE', '1978-07-11', 'Active'),
 (61, 'Mansi wakodkar', '2019-10-18', '08:42:44', '    A3 mantri nagar ,bhavsar chowk', '9834340509', 'nanded', '431605', 'mansi', 'mansi786', 'B+', 'FEMALE', '1999-08-28', 'Active'),
 (64, 'shraddha devshetwar', '2019-10-19', '07:00:03', ' vishnupuri', '9850071512', 'Nanded', '431605', 'sdevshetwar@gmail.com', 'shraddha@786', 'B+', 'FEMALE', '2000-02-02', 'Active'),
@@ -192,22 +192,22 @@ ALTER TABLE `department`
   ADD PRIMARY KEY (`departmentid`);
 
 --
--- Indexes for table `doctor`
+-- Indexes for table `staff`
 --
-ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`doctorid`);
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staffid`);
 
 --
--- Indexes for table `doctor_timings`
+-- Indexes for table `staff_timings`
 --
-ALTER TABLE `doctor_timings`
-  ADD PRIMARY KEY (`doctor_timings_id`);
+ALTER TABLE `staff_timings`
+  ADD PRIMARY KEY (`staff_timings_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`patientid`),
+  ADD PRIMARY KEY (`userid`),
   ADD KEY `loginid` (`loginid`);
 
 --
@@ -227,22 +227,22 @@ ALTER TABLE `department`
   MODIFY `departmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- AUTO_INCREMENT for table `doctor`
+-- AUTO_INCREMENT for table `staff`
 --
-ALTER TABLE `doctor`
-  MODIFY `doctorid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+ALTER TABLE `staff`
+  MODIFY `staffid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
--- AUTO_INCREMENT for table `doctor_timings`
+-- AUTO_INCREMENT for table `staff_timings`
 --
-ALTER TABLE `doctor_timings`
-  MODIFY `doctor_timings_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+ALTER TABLE `staff_timings`
+  MODIFY `staff_timings_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `patientid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

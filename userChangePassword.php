@@ -3,7 +3,7 @@ include './includes/header.php';
 
 if(isset($_POST[submit]))
 {
-	$sql = "UPDATE user SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND patientid='$_SESSION[patientid]'";
+	$sql = "UPDATE user SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND userid='$_SESSION[userid]'";
 	$qsql= mysqli_query($conn,$sql);
 	if(mysqli_affected_rows($conn) == 1)
 	{
