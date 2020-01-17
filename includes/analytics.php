@@ -1,4 +1,5 @@
 <link href="./css/analytics.css" rel="stylesheet"></head>
+
 <link href="./css/graphs1.css" rel="stylesheet"></head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <?php 
@@ -49,7 +50,7 @@ Highcharts.chart('container', {
         type: 'areaspline'
     },
     title: {
-        text: 'Average fruit consumption during one week'
+        text: 'Average vibrations during one week'
     },
     legend: {
         layout: 'vertical',
@@ -76,12 +77,12 @@ Highcharts.chart('container', {
     },
     yAxis: {
         title: {
-            text: 'Fruit units'
+            text: 'vibrations in hz'
         }
     },
     tooltip: {
         shared: true,
-        valueSuffix: ' units'
+        valueSuffix: ' hz'
     },
     credits: {
         enabled: false
@@ -92,7 +93,7 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'John',
+        name: 'warehouse',
         data: [  <?php
                       while($row = mysqli_fetch_array($gas1))  
                           {  
@@ -124,10 +125,10 @@ Highcharts.chart('container2', {
         zoomType: 'xy'
     },
     title: {
-        text: 'Average Monthly Temperature and Rainfall in Tokyo'
+        text: 'Average Monthly Temperature and humidity in warehouse'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'Source: sensors data'
     },
     xAxis: [{
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -155,7 +156,7 @@ Highcharts.chart('container2', {
             }
         },
         labels: {
-            format: '{value} mm',
+            format: '{value} %',
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
@@ -188,7 +189,7 @@ Highcharts.chart('container2', {
                  ?> 
                              52,56,110, 49.9, 71.5,67],
         tooltip: {
-            valueSuffix: ' mm'
+            valueSuffix: ' %'
         }
 
     }, {
@@ -221,17 +222,17 @@ Highcharts.chart('container5', {
         type: 'line'
     },
     title: {
-        text: 'Monthly Average Temperature'
+        text: 'Monthly Average gas composition(ppm)'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'Source: sensors data'
     },
     xAxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     },
     yAxis: {
         title: {
-            text: 'Temperature (°C)'
+            text: 'gas (ppm)'
         }
     },
     plotOptions: {
@@ -243,7 +244,7 @@ Highcharts.chart('container5', {
         }
     },
     series: [{
-        name: 'Tokyo',
+        name: 'warehouse',
         data: [  <?php
                       while($row = mysqli_fetch_array($gas))  
                           {  
