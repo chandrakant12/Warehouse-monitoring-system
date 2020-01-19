@@ -13,11 +13,15 @@ session_start();
 ?>
 
 
-
+<script src="./js/highcharts.js"></script>
+<script src="./js/modules/exporting.js"></script>
+<script src="./js/modules/export-data.js"></script>
+<script src="./js/modules/accessibility.js"></script>
+<script src="./js/graphs.js"></script>
 
 <div class="app-container app-theme-white fixed-header ">
   <div class="app-main">
-            <div class="app-sidebar sidebar-shadow">
+           <!-- <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
@@ -47,8 +51,8 @@ session_start();
                             </span>
                         </button>
                     </span>
-                </div>    <div class="scrollbar-sidebar">
-                    <div class="app-sidebar__inner">
+                </div>   <div class="scrollbar-sidebar">
+                   <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Menu</li>
                             <li >
@@ -99,7 +103,9 @@ session_start();
                             </li>
                     </div>
                 </div>
-            </div>    <div class="app-main__outer">
+            </div>  --> 
+            <link href="./css/graphs1.css" rel="stylesheet"></head>
+             <div class="app-main__outer">
                 <div class="app-main__inner">
                     <div class="app-page-title">
                         <div class="page-title-wrapper">
@@ -120,7 +126,93 @@ session_start();
                     <div class="tabs-animation">
                         <div class="row">
                             <div class="col-lg-12 col-xl-6">
-                                <div class="main-card mb-3 card">
+                                <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 300 "></div>
+
+        <script type="text/javascript">
+Highcharts.chart('container2', {
+    chart: {
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Average Monthly Temperature and humidity in warehouse'
+    },
+    subtitle: {
+        text: 'Source: sensors data'
+    },
+    xAxis: [{
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}°C',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        title: {
+            text: 'Temperature',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: 'humidity',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+            format: '{value} %',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 120,
+        verticalAlign: 'top',
+        y: 100,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || // theme
+            'rgba(255,255,255,0.25)'
+    },
+    series: [{
+        name: 'humidity',
+        type: 'column',
+        yAxis: 1,
+        data: [
+                             52,56,110, 49.9, 71.5,67
+                            ],
+        tooltip: {
+            valueSuffix: ' %'
+        }
+
+    }, {
+        name: 'Temperature',
+        type: 'spline',
+        data: [  7.0, 6.9, 9.5, 21.5, 9.6
+                           ],
+        tooltip: {
+            valueSuffix: '°C'
+        } 
+    }]
+});
+        </script>
+
+   
+    
+ </div>
+                              <!--  <div class="main-card mb-3 card">
                                     <div class="card-body"><h5 class="card-title">Status Report</h5>
                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
                                             <div style="height: 227px;">
@@ -189,7 +281,7 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-lg-12 col-xl-6">
                                 <div class="main-card mb-3 card">
                                     <div class="grid-menu grid-menu-2col">
