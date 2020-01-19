@@ -187,9 +187,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="userDashboard.php">Dashboard</a>
-                    </li>
+                    </li>-->
 
                     <li class="nav-item">
                         <a class="nav-link" href="userAccount.php">Account</a>

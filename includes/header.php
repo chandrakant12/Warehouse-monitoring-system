@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mahavitaran</title>
+    <title>warehouse</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -32,7 +32,7 @@
 
 
 <nav class="nav aqua-gradient py-4 font-weight-bold z-depth-1 navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">MahaVitaran</a>
+    <a class="navbar-brand" href="#">CWC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -61,9 +61,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="userRegister.php">Registration</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="stats.php">statistics</a>
-                </li>
+                </li>-->
             
             
                 <?php

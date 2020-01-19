@@ -50,10 +50,10 @@
     <div class="container">
         <div id="content">
             <h1>Company Profile</h1>
-            <p align="justify">The erstwhile Maharashtra State Electricity Board was looking after Generation, Transmission & Distribution of Electricity in the State of Maharashtra barring Mumbai. After the enactment of Electricity Act 2003, MSEB was restructured into 4 Companies viz. MSEB Holding Co. Ltr., Maharashtra State Electricity Distribution Co. Ltr. (Mahavitaran), Maharashtra State Power Generation Co. Ltr. (Mahagenco) and Maharashtra State Electricity Transmission Co. Ltr. (Mahatransco) on 6th June 2005. Mahavitaran distributes electricity to consumers across the State except Mumbai.</p>
+            <p align="justify">Central Warehousing Corporation was established during 1957 to provide logistics support to the agricultural sector. It is a public Warehouse operator offering logistics services to diverse group of clients. CWC operates 421 Warehouses across the country with a storage capacity of 10.10  million tonnes providing warehousing services. These services includes foodgrain warehouses, industrial warehousing, custom bonded warehouses, container freight stations, inland clearance depots and aircargo complexes. </p>
             
             <h1>Vision</h1>
-            <p>“To be the best power distribution utility of India by delivering reliable and quality service at competitive price to the consumers and contribute to the sustainable development of our State and Nation”</p>
+            <p>“To emerge as a leading market facilitator by providing integrated warehousing infrastructure and other logistics services, supporting India’s growing economy with emphasis on stakeholder satisfaction.”</p>
 
             <h1>Mission</h1>
             <table class="table table-hover">
@@ -66,7 +66,7 @@
                 <tbody>
                     <tr>
                         <td><img height="60px" width="60px" src="./images/1.svg"></td>
-                        <td>We, as a professional company, dedicate ourselves to accept all challenges to serve our consumers by supplying reliable and quality power at reasonable and competitive tariffs so as to boost agricultural, industrial sector and overall economic development of Maharashtra.</td>
+                        <td>We, as a professional company, dedicate ourselves to accept all challenges to serve our consumers by provide reliable and quality service at reasonable and competitive prices so as to boost agricultural, industrial sector and overall economic development of Maharashtra.</td>
                     </tr>
                     <tr>
                         <td><img height="60px" width="60px" src="./images/2.svg"></td>

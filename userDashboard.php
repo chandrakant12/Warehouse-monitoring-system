@@ -15,7 +15,7 @@
 
     <div class="row">
         
-        <?php
+        <!--<?php
         /*
         <nav class=" col-md-2 d-none d-md-block sunny-morning-gradient sidebar">
             <br>

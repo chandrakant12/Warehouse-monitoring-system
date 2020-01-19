@@ -9,7 +9,7 @@
     }
     .jumbo{
         padding-top: 3vh;
-        max-height: 23vh;
+        max-height: 15vh;
     }
     .news{
         font-size: 9pt;
@@ -31,7 +31,7 @@
             <img class="img-fluid" src="./images/cwc_logo.jpg">
         </div>
         <div class="col-8 text-right ">
-            <h1 class="heading-text">Maharashtra State Electricity Distribution Co. Ltd.</h1>
+            <h1 class="heading-text">Warehouse control and analyzer unit</h1>
         </div>
     </div>
 </div>
@@ -55,25 +55,28 @@
                 <div class="carousel-inner crousel-height" role="listbox">
                     <!--First slide-->
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://www.rd.com/wp-content/uploads/2011/08/electricity.jpg" alt="First slide">
+                        <img class="d-block w-140" src="https://logisticsinsider.in/wp-content/uploads/2019/10/NWCC-Warehpuse-1280x640.jpg" alt="First slide">
+
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h5>warehouse data analysis </h5>
+                            <p>We offer customised, comprehensive logistics services for sectors such as temperature , humidity,air quality and much more ... </p>
                         </div>
                     </div>
-                    <!--/First slide-->
+                    <!--/First slide
+                       https://www.rd.com/wp-content/uploads/2011/08/electricity.jpg
+                    -->
                     <!--Second slide-->
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSZNtOx6z7avMQBry47F48vq72L97PClDB_6PAH6niQNpBtPF8D" alt="Second slide">
+                        <img class="d-block w-100" src="https://interlakemecalux.cdnwm.com/blog/img/3d-chart-warehouse-layout-plan.1.1.jpg" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h5>perfect prediction for safety</h5>
+                            <p>predicts temperature ,humidity,smoke for future decisions</p>
                         </div>
                     </div>
                     <!--/Second slide-->
                     <!--Third slide-->
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="https://bartica.gov.gy/wp-content/uploads/2018/06/Energized_electric_grid_XL_721_420_80_s_c11.jpg" alt="Third slide">
+                        <img class="d-block w-100" src=" https://www.shiprocket.in/wp-content/uploads/2016/12/5-1.jpg" alt="Third slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -100,24 +103,14 @@
             <div class="container">  
                 <br>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Monitoring Warehouse Centers for Environmental Information is committed to the monitoring and assessment of the state of the Earth's climate in near real-time, providing decision-makers at all levels of the public and private sectors with data and information on climate trends and variability.
+
                 </p>
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    
                 </p>
 
-                <!-- News jumbotron -->
                 <div class="jumbotron text-center hoverable p-4">
                     <div class="row">
                         <div class="col-md-4 offset-md-1 mx-3 my-3">
@@ -132,9 +125,9 @@
                             <a href="#" class="green-text">
                                 <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> Work</h6>
                             </a>
-                            <h4 class="h4 mb-4">Current Electricity Status</h4>
-                            <p class="font-weight-normal">Get to know the live status of electricity in yout region.</p>
-                            <a href="userElectricityStatus.php" class="btn btn-success">Read more</a>
+                            <h4 class="h4 mb-4">Current climate Status</h4>
+                            <p class="font-weight-normal">Get to know the live status of electricity in your region.</p>
+                            <a href="userElectricityStatus.php" class="btn btn-success">know more</a>
                         </div>
                     </div>
                 </div>

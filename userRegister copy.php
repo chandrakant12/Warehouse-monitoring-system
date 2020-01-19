@@ -21,7 +21,7 @@
 		else
 		{	
 			
-			$sql ="INSERT INTO user(username,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[username]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+			$sql ="INSERT INTO user(username,address,mobileno,city,pincode,loginid,password,gender) values('$_POST[username]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]')";
 			if($qsql = mysqli_query($conn,$sql))
 			{
 				echo "<script>alert('record inserted successfully...');</script>";
@@ -79,7 +79,7 @@
 											{
 										?>       
 
-										<tr class="">
+										<!--<tr class="">
 											<td>Admission Date : </td>
 											<td><input class="form-control" type="date" name="admissiondate" id="admissiondate" value="<?php echo $rsedit[admissiondate]; ?>" readonly /></td>
 										</tr>
@@ -90,7 +90,7 @@
 
 										<?php
 											}
-										?>
+										?>-->
 
 										<tr class="">
 											<td>Address : </td>
@@ -120,7 +120,7 @@
 											<td>Confirm Password : </td>
 											<td><input class="form-control" type="password" name="confirmpassword" id="confirmpassword"  value="<?php echo $rsedit[confirmpassword]; ?>"/></td>
 										</tr>
-										<tr class="">
+										<!--<tr class="">
 											<td>Group : </td>
 											<td><select class="browser-default custom-select" name="select2" id="select2">
 												<option value="">Select</option>
@@ -166,7 +166,7 @@
 										<tr class="">
 											<td>Date Of Birth : </td>
 											<td><input class="form-control" type="date" name="dateofbirth" max="<?php echo date("Y-m-d"); ?>" id="dateofbirth"  value="<?php echo $rsedit[dob]; ?>"/></td>
-										</tr>					
+										</tr>-->					
 										<tr class="">
 											<td colspan="2" align="center"><input type="submit" class="btn purple-gradient" name="submit" id="submit" value="Submit" /></td>
 										</tr>

@@ -95,6 +95,7 @@ Highcharts.chart('container', {
     series: [{
         name: 'warehouse',
         data: [  <?php
+
                       while($row = mysqli_fetch_array($gas1))  
                           {  
                                echo $row["vibration"].",";  
@@ -187,7 +188,8 @@ Highcharts.chart('container2', {
                               echo $row["humidity"].",";  
                           }  
                  ?> 
-                             52,56,110, 49.9, 71.5,67],
+                            // 52,56,110, 49.9, 71.5,67
+                            ],
         tooltip: {
             valueSuffix: ' %'
         }
@@ -201,7 +203,8 @@ Highcharts.chart('container2', {
                                echo $row["temperature"].",";  
                           } 
                           ?>
-                           7.0, 6.9, 9.5, 21.5, 9.6],
+                           //7.0, 6.9, 9.5, 21.5, 9.6
+                           ],
         tooltip: {
             valueSuffix: '°C'
         } 
@@ -251,7 +254,8 @@ Highcharts.chart('container5', {
                                echo $row["gas"].",";  
                           } 
                           ?>
-                          7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2]
+                          //7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2
+                          ]
     }]
 });
 		</script>

@@ -9,7 +9,7 @@
 	}
 	if(isset($_POST[submit]))
 	{
-		$sql = "SELECT * FROM user WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active';";
+		$sql = "SELECT * FROM user WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' ;";
 		$qsql = mysqli_query($conn,$sql);
 		
 		if(mysqli_num_rows($qsql) >= 1)
