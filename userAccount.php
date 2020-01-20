@@ -116,10 +116,10 @@
                 <a href="userElectricityStatus.php" class="btn btn-success">Read more</a>
             </div>
         </div>
-    </div>
+</div>
 
 
-
+<div class="container text-center">
 
             <h2>Contact Us</h2>
             <!--Facebook-->
@@ -153,9 +153,9 @@
             <!--Reddit-->
             <a class="btn-floating btn-lg btn-reddit red" type="button" role="button"><i class="fab fa-reddit-alien"></i></a>
             </div>
-        
+            <br><br>
+        </div>
     </div>
+
 </div>
-
-
 <?php include './includes/footer.php'; ?>

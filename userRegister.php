@@ -21,7 +21,7 @@
 		else
 		{	
 			
-			$sql ="INSERT INTO user(username,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[username]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+			$sql ="INSERT INTO user(username,address,mobileno,city,pincode,loginid,password,dob) values('$_POST[username]','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[dateofbirth]')";
 			if($qsql = mysqli_query($conn,$sql))
 			{
 				echo "<script>alert('record inserted successfully...');</script>";
@@ -120,7 +120,7 @@
 											<td>Confirm Password : </td>
 											<td><input class="form-control" type="password" name="confirmpassword" id="confirmpassword"  value="<?php echo $rsedit[confirmpassword]; ?>"/></td>
 										</tr>
-										<tr class="">
+										<!--<tr class="">
 											<td>Group : </td>
 											<td><select class="browser-default custom-select" name="select2" id="select2">
 												<option value="">Select</option>
@@ -162,7 +162,7 @@
 												?>
 												</select>
 											</td>
-										</tr>
+										</tr>-->
 										<tr class="">
 											<td>Date Of Birth : </td>
 											<td><input class="form-control" type="date" name="dateofbirth" max="<?php echo date("Y-m-d"); ?>" id="dateofbirth"  value="<?php echo $rsedit[dob]; ?>"/></td>
