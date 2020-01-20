@@ -98,7 +98,7 @@
             </div>
         </nav>
         */
-        ?>
+        ?>-->
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <style type="text/css">
@@ -184,38 +184,8 @@
             */
             ?>
 
-            <h2>Contact Us</h2>
-            <!--Facebook-->
-            <a class="btn-floating btn-lg btn-fb btn-success" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-            <!--Twitter-->
-            <a class="btn-floating btn-lg btn-tw info-color " type="button" role="button"><i class="fab fa-twitter"></i></a>
-            <!--Google +-->
-            <a class="btn-floating btn-lg btn-gplus danger-color" type="button" role="button"><i class="fab fa-google-plus-g"></i></a>
-            <!--Linkedin-->
-            <a class="btn-floating btn-lg btn-li info-color" type="button" role="button"><i class="fab fa-linkedin-in"></i></a>
-            <!--Instagram-->
-            <a class="btn-floating btn-lg btn-ins red" type="button" role="button"><i class="fab fa-instagram"></i></a>
-            <!--Pinterest-->
-            <a class="btn-floating btn-lg btn-pin danger-color" type="button" role="button"><i class="fab fa-pinterest"></i></a>
-            <!--Vkontakte-->
-            <a class="btn-floating btn-lg btn-vk warning-color" type="button" role="button"><i class="fab fa-vk"></i></a>
-            <!--Stack Overflow-->
-            <a class="btn-floating btn-lg btn-so orange" type="button" role="button"><i class="fab fa-stack-overflow"></i></a>
-            <!--Youtube-->
-            <a class="btn-floating btn-lg btn-yt danger-color" type="button" role="button"><i class="fab fa-youtube"></i></a>
-            <!--Slack-->
-            <a class="btn-floating btn-lg btn-slack pink" type="button" role="button"><i class="fab fa-slack-hash"></i></a>
-            <!--Github-->
-            <a class="btn-floating btn-lg btn-git brown" type="button" role="button"><i class="fab fa-github"></i></a>
-            <!--Comments-->
-            <a class="btn-floating btn-lg btn-comm warning-color" type="button" role="button"><i class="fas fa-comments"></i></a>
-            <!--Email-->
-            <a class="btn-floating btn-lg btn-email red" type="button" role="button"><i class="fas fa-envelope"></i></a>
-            <!--Dribbble-->
-            <a class="btn-floating btn-lg btn-dribbble blue" type="button" role="button"><i class="fab fa-dribbble"></i></a>
-            <!--Reddit-->
-            <a class="btn-floating btn-lg btn-reddit red" type="button" role="button"><i class="fab fa-reddit-alien"></i></a>
-            <hr>
+            
+        
         </main>
     </div>
 </div>

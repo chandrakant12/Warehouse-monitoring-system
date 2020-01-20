@@ -4,8 +4,12 @@ session_start();
  
  $connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
  $cquery1 = " SELECT * FROM sensors ORDER BY id DESC LIMIT 1";  
- // $gasd = "SELECT * FROM `sensors` where 1 ";  
+ $gasd = " SELECT * FROM predictedhumid where id = 1 ";  
 
+$predicttemp= mysqli_query($connect1, $gasd); 
+$predichumid= mysqli_query($connect1, $gasd);
+
+ $flame = mysqli_query($connect1, $cquery1); 
  $temp = mysqli_query($connect1, $cquery1);  
   $vibr= mysqli_query($connect1, $cquery1); 
     $humb = mysqli_query($connect1, $cquery1); 
@@ -116,7 +120,7 @@ session_start();
                                     </i>
                                 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div>climate status
-                                    <div class="page-title-subheading">.
+                                    <div class="page-title-subheading">
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +130,7 @@ session_start();
                     <div class="tabs-animation">
                         <div class="row">
                             <div class="col-lg-12 col-xl-6">
-                                <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 300 "></div>
+                                <div id="container2" style="min-width: 400px; height: 400px; max-width: 600px; margin: 300 "></div>
 
         <script type="text/javascript">
 Highcharts.chart('container2', {
@@ -140,8 +144,8 @@ Highcharts.chart('container2', {
         text: 'Source: sensors data'
     },
     xAxis: [{
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: ['hour1', 'hour2', 'hour3', 'hour4', 'hour5', 'hour6',
+            'hour7', 'hour8', 'hour9', 'hour10', 'hour11', 'hour12' , 'hour13' , 'hour14' , 'hour15','hour16','hour17','hour18','hour19','hour20','hour21','hour22','hour23','hour24'],
         crosshair: true
     }],
     yAxis: [{ // Primary yAxis
@@ -190,8 +194,13 @@ Highcharts.chart('container2', {
         name: 'humidity',
         type: 'column',
         yAxis: 1,
-        data: [
-                             52,56,110, 49.9, 71.5,67
+        data: [   <?php  
+                    while($row = mysqli_fetch_array($predichumid))  
+                          {  
+                              echo $row["humidity"].",";  
+                          }  
+                 ?> 
+                            
                             ],
         tooltip: {
             valueSuffix: ' %'
@@ -200,7 +209,13 @@ Highcharts.chart('container2', {
     }, {
         name: 'Temperature',
         type: 'spline',
-        data: [  7.0, 6.9, 9.5, 21.5, 9.6
+        data: [  
+                 <?php  
+                    while($row = mysqli_fetch_array($predicttemp))  
+                          {  
+                              echo "".$row["hour1"].",".$row["hour2"].",".$row["hour3"].",".$row["hour4"].",".$row["hour5"].",".$row["hour6"].",".$row["hour7"].",".$row["hour8"].",".$row["hour9"].",".$row["hour10"].",".$row["hour11"].",".$row["hour12"].",".$row["hour13"].",".$row["hour14"].",".$row["hour15"].",".$row["hour16"].",".$row["hour17"].",".$row["hour18"].",".$row["hour19"].",".$row["hour20"].",".$row["hour21"].",".$row["hour22"].",".$row["hour23"].",".$row["hour24"]."";  
+                          }  
+                 ?> 
                            ],
         tooltip: {
             valueSuffix: '°C'
@@ -414,8 +429,14 @@ Highcharts.chart('container2', {
                                                 <img style="width:40px;" src="https://img.icons8.com/dusk/64/000000/power-strip.png">
                                             </i></div>
                                         <div class="widget-chart-content">
-                                            <div class="widget-subheading">Power Cut Time</div>
-                                            <div class="widget-numbers"><span>Not today</span></div>
+                                            <div class="widget-subheading">flames detected???</div>
+                                            <div class="widget-numbers"><span>          <?php
+
+                      while($row = mysqli_fetch_array($flame))  
+                          {  
+                               echo $row["flame"] ;  
+                          } 
+                          ?> </span></div>
                                             
                                         </div>
                                     </div>
@@ -480,10 +501,10 @@ Highcharts.chart('container2', {
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th width="20%" class="text-center">Status</th>
-                                                <th class="text-center">Name</th>
-                                                <th class="text-center">Mobile Number</th>
-                                                <th class="text-center">Experience</th>
+                                                <th width="20%" class="text-center">Temperature</th>
+                                                <th class="text-center">Gas</th>
+                                                <th class="text-center">Humidity</th>
+                                                <th class="text-center">Vibrations</th>
                                             
                                             </tr>
                                             </thead>
@@ -491,19 +512,19 @@ Highcharts.chart('container2', {
 
 
                                             <?php
-                                            $sql ="SELECT * FROM staff";
+                                            $sql ="SELECT * FROM sensors";
                                             $qsql = mysqli_query($conn,$sql);
                                             while($rs = mysqli_fetch_array($qsql))
                                             {
                                                 echo "<tr class=\"text-center\">
                                                 <td>
-                                                <strong><strong> Stat </strong>: $rs[status] </td>
+                                                <strong><strong>  </strong>" .$rs["temperature"]. "'C</td>
                                                 <td>
-                                                <strong> <strong>$rs[staffname]</strong></strong>
+                                                <strong> <strong>".$rs["gas"]."ppm</strong></strong>
                                                 </td>
                                                 <td>
-                                                <strong>Mob No</strong> : $rs[mobileno]</td>
-                                                <td><strong> $rs[experience] years</strong></td>
+                                                <strong>Mob No</strong> : ".$rs["humidity"]."%</td>
+                                                <td><strong> ".$rs["vibration"]. "hz</strong></td>
                                                
                                                 </tr>";
                                             }
