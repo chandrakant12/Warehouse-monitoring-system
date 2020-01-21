@@ -224,7 +224,7 @@
                     -->
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="userElectricityStatus.php">Electricity Status</a>
+                        <a class="nav-link" href="userElectricityStatus.php">Climate Status</a>
                     </li>
                     
                     <li class="nav-item">
@@ -232,7 +232,7 @@
                     </li>
                 </ul>
 
-                <a href="logOut.php"><button class="btn heavy-rain-gradient btn-outline-success my-2 my-sm-0">Log Out</button></a>
+                <a href="logOut.php"><button align="right" class="btn heavy-rain-gradient btn-outline-success my-2 my-sm-0">Log Out</button></a>
                 
             </div>
         </nav>

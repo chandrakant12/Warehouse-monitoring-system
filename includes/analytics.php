@@ -1,47 +1,94 @@
-<link href="./css/analytics.css" rel="stylesheet"></head>
-
 <link href="./css/graphs1.css" rel="stylesheet"></head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<?php 
-session_start(); 
-//for graph one 
- $connect = mysqli_connect("localhost", "root", "", "ktm");  
- $cquery = "SELECT * FROM `account` where userid= 7";  
- $cresult = mysqli_query($connect, $cquery);  
-//for graph two
- $connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
- $cquery1 = "SELECT * FROM `sensors` where 1 ";  
-  $gasd = "SELECT * FROM `sensors` where 1 ";  
 
- $cresult1 = mysqli_query($connect1, $cquery1);  
-  $cresult3 = mysqli_query($connect1, $cquery1); 
-    $gas = mysqli_query($connect1, $cquery1); 
-    $gas1 = mysqli_query($connect1, $cquery1); 
-?>
+
+ <br>
+<div class="container">
+<form class="form-group" action="" method="post">
+    
+    <div class="row">
+        <div class="col">
+    <div class="input-group mb-3 align">
   
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
- 
+  <select class="custom-select " style="height: 60px" name="warevalue">
+    <option selected>choose warehouse</option>
+    <option value="1">Warehouse1</option>
+    <option value="2">Warehouse2</option>
+    <option value="3">Warehouse3</option>
+    <option value="4">Warehouse4</option>
 
+  </select>
+  </div>
+</div>
+  <div class="col">
+  <input class="btn btn-light"type='submit' value='analyse'/>
+</div>
+
+</div>
+
+
+    </form>
+</div>
+<div>
+<?php
+
+echo "<h1 class = \"text-center\">Warehouse $_POST[warevalue]</h1>"?>
+</div>
+
+<?php
+session_start(); 
+//for graph two
+$connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
+$cquery1 = "SELECT * FROM `sensors` where userid = 1 and whid = '$_POST[warevalue]' "; 
+$cquery2 = "SELECT * FROM `sensors` where userid = 1 and whid = '$_POST[warevalue]' ";   
+$gasd = "SELECT * FROM `sensors` where userid = 1 and whid =  '$_POST[warevalue]' ";  
+
+$cresult1 = mysqli_query($connect1, $cquery1);  
+$cresult3 = mysqli_query($connect1, $cquery1); 
+$gas = mysqli_query($connect1, $cquery1); 
+$gaslpg = mysqli_query($connect1, $cquery1); 
+
+$gasco = mysqli_query($connect1, $cquery1); 
+
+$gassmoke = mysqli_query($connect1, $cquery1); 
+
+$gas1 = mysqli_query($connect1, $cquery1); 
+$date= mysqli_query($connect1, $cquery2);
+$date1= mysqli_query($connect1, $cquery2);
+$date2= mysqli_query($connect1, $cquery2);
+$date3= mysqli_query($connect1, $cquery2);
+
+?>
 <!--script for graphs-->
 <script src="./js/highcharts.js"></script>
 <script src="./js/modules/exporting.js"></script>
 <script src="./js/modules/export-data.js"></script>
 <script src="./js/modules/accessibility.js"></script>
+<script src="./js/modules/series-label.js"></script>
 <script src="./js/graphs.js"></script>
 
 <!--link to bootstrap-->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<br><br>
 
 
 
+<!--
+session_start(); 
+//for graph two
+$connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
+$cquery1 = "SELECT * FROM `sensors` where userid = 1 and whid = $_POST['warevalue'] ";  
+$gasd = "SELECT * FROM `sensors` where userid = 1 and whid = 1 ";  
 
+$cresult1 = mysqli_query($connect1, $cquery1);  
+$cresult3 = mysqli_query($connect1, $cquery1); 
+$gas = mysqli_query($connect1, $cquery1); 
+$gas1 = mysqli_query($connect1, $cquery1); 
+-->
 <div class="row">
-    <div class="col-sm-4" style="background-color:lavender;">
+    <div class="col-sm-4">
     	<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 "></div>
  
            <script type="text/javascript">
@@ -65,13 +112,16 @@ Highcharts.chart('container', {
     },
     xAxis: {
         categories: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-            'Sunday'
+
+                    <?php
+
+                      while($row = mysqli_fetch_array($date))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>
+
         ],
       
     },
@@ -114,7 +164,7 @@ Highcharts.chart('container', {
     </div>
 
 
-    <div class="col-sm-4" style="background-color:lavenderblush;">
+    <div class="col-sm-4" >
     	
 
 
@@ -132,8 +182,14 @@ Highcharts.chart('container2', {
         text: 'Source: sensors data'
     },
     xAxis: [{
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date2))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>],
         crosshair: true
     }],
     yAxis: [{ // Primary yAxis
@@ -216,7 +272,7 @@ Highcharts.chart('container2', {
     
  </div>
     
-    <div class="col-sm-4" style="background-color:lavenderblush;">
+    <div class="col-sm-4" >
        <div id="container5"></div>
 
 				<script type="text/javascript">
@@ -231,7 +287,14 @@ Highcharts.chart('container5', {
         text: 'Source: sensors data'
     },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date1))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>]
     },
     yAxis: {
         title: {
@@ -263,7 +326,7 @@ Highcharts.chart('container5', {
 
 
 </div>
-</div>
+</div> <br><br>
 <!--<div class="row">
     <div class="col-sm-6" style="background-color:lavender;">
     	<div id="container3" style="min-width: 310px; height: 400px; max-width: 310px; margin: 0 "></div>
@@ -273,10 +336,102 @@ Highcharts.chart('container5', {
     	<div id="container4" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 "></div>
 
     </div>
-  -->  
+  -->   <figure class="highcharts-figure">
+    <div id="container10"></div>
+    
+</figure>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+Highcharts.chart('container10', {
+    title: {
+        text: 'Combination chart'
+    },
+    xAxis: {
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date3))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>]
+    },
+    labels: {
+        items: [{
+            html: 'Gas Composition In Warehouse',
+            style: {
+                left: '50px',
+                top: '18px',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'black'
+            }
+        }]
+    },
+    series: [{
+        type: 'column',
+        name: 'lpg',
+        data: [<?php
+                      while($row = mysqli_fetch_array($gaslpg))  
+                          {  
+                               echo $row["gaslpg"].",";  
+                          } 
+                          ?>]
+    }, {
+        type: 'column',
+        name: 'co',
+        data: [<?php
+                      while($row = mysqli_fetch_array($gasco))  
+                          {  
+                               echo $row["gasco"].",";  
+                          } 
+                          ?>]
+    }, {
+        type: 'column',
+        name: 'smoke',
+        data: [<?php
+                      while($row = mysqli_fetch_array($gassmoke))  
+                          {  
+                               echo $row["gassmoke"].",";  
+                          } 
+                          ?>]
+    }, {
+        type: 'spline',
+        name: 'Average',
+        data: [],
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }, {
+        type: 'pie',
+        name: 'Total consumption',
+        data: [{
+            name: 'Jane',
+            y: 13,
+            color: Highcharts.getOptions().colors[0] // Jane's color
+        }, {
+            name: 'John',
+            y: 23,
+            color: Highcharts.getOptions().colors[1] // John's color
+        }, {
+            name: 'Joe',
+            y: 19,
+            color: Highcharts.getOptions().colors[2] // Joe's color
+        }],
+        center: [100, 80],
+        size: 100,
+        showInLegend: false,
+        dataLabels: {
+            enabled: false
+        }
+    }]
+});
+
+        </script>
+
 

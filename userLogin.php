@@ -37,7 +37,7 @@
 </style>
 
 <br><br>
-<div class="container text-center card-image"  ">
+<div class="container text-center card-image"  >
 	<!-- Material form login -->
 	<div class="card cardSty card-image" >
 

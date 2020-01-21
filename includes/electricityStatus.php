@@ -1,11 +1,18 @@
 <link href="./css/analytics.css" rel="stylesheet">
 <?php 
 session_start(); 
- 
+ $i=1;
  $connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
  $cquery1 = " SELECT * FROM sensors ORDER BY id DESC LIMIT 1";  
- // $gasd = "SELECT * FROM `sensors` where 1 ";  
+ $gasd = " SELECT * FROM predictedhumid ORDER BY id DESC LIMIT 1" ;  
+ $gasd1 = " SELECT * FROM predictedtemp ORDER BY id DESC LIMIT 1" ; 
 
+$predicttemp= mysqli_query($connect1, $gasd1); 
+$predicthumid= mysqli_query($connect1, $gasd);
+$predicttemp1= mysqli_query($connect1, $gasd);
+$predicthumid1= mysqli_query($connect1, $gasd);
+
+ $flame = mysqli_query($connect1, $cquery1); 
  $temp = mysqli_query($connect1, $cquery1);  
   $vibr= mysqli_query($connect1, $cquery1); 
     $humb = mysqli_query($connect1, $cquery1); 
@@ -18,6 +25,7 @@ session_start();
 <script src="./js/modules/export-data.js"></script>
 <script src="./js/modules/accessibility.js"></script>
 <script src="./js/graphs.js"></script>
+
 
 <div class="app-container app-theme-white fixed-header ">
   <div class="app-main">
@@ -107,8 +115,8 @@ session_start();
             <link href="./css/graphs1.css" rel="stylesheet"></head>
              <div class="app-main__outer">
                 <div class="app-main__inner">
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
+                   <div class="app-page-title">
+                       <!-- <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="">
                                     <i class=" icon-gradient bg-ripe-malin">
@@ -116,17 +124,17 @@ session_start();
                                     </i>
                                 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div>climate status
-                                    <div class="page-title-subheading">.
+                                    <div class="page-title-subheading">
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                            </div>-->
                     </div> 
 
                     <div class="tabs-animation">
                         <div class="row">
                             <div class="col-lg-12 col-xl-6">
-                                <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 300 "></div>
+                                <div id="container2" style="min-width: 400px; height: 400px; max-width: 600px; margin: 300 "></div>
 
         <script type="text/javascript">
 Highcharts.chart('container2', {
@@ -134,14 +142,14 @@ Highcharts.chart('container2', {
         zoomType: 'xy'
     },
     title: {
-        text: 'Average Monthly Temperature and humidity in warehouse'
+        text: 'the 24 hours future data prediction '
     },
     subtitle: {
         text: 'Source: sensors data'
     },
     xAxis: [{
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: ['hour1', 'hour2', 'hour3', 'hour4', 'hour5', 'hour6',
+            'hour7', 'hour8', 'hour9', 'hour10', 'hour11', 'hour12' , 'hour13' , 'hour14' , 'hour15','hour16','hour17','hour18','hour19','hour20','hour21','hour22','hour23','hour24'],
         crosshair: true
     }],
     yAxis: [{ // Primary yAxis
@@ -190,8 +198,13 @@ Highcharts.chart('container2', {
         name: 'humidity',
         type: 'column',
         yAxis: 1,
-        data: [
-                             52,56,110, 49.9, 71.5,67
+        data: [ <?php  
+                    while($row = mysqli_fetch_array($predicthumid))  
+                          {  
+                              echo "".$row["hour1"].",".$row["hour2"].",".$row["hour3"].",".$row["hour4"].",".$row["hour5"].",".$row["hour6"].",".$row["hour7"].",".$row["hour8"].",".$row["hour9"].",".$row["hour10"].",".$row["hour11"].",".$row["hour12"].",".$row["hour13"].",".$row["hour14"].",".$row["hour15"].",".$row["hour16"].",".$row["hour17"].",".$row["hour18"].",".$row["hour19"].",".$row["hour20"].",".$row["hour21"].",".$row["hour22"].",".$row["hour23"].",".$row["hour24"]."";  
+                          }  
+                 ?>
+                           // 52,56,110, 49.9, 71.5,67
                             ],
         tooltip: {
             valueSuffix: ' %'
@@ -200,7 +213,13 @@ Highcharts.chart('container2', {
     }, {
         name: 'Temperature',
         type: 'spline',
-        data: [  7.0, 6.9, 9.5, 21.5, 9.6
+        data: [  <?php  
+                    while($row = mysqli_fetch_array($predicttemp))  
+                          {  
+                              echo "".$row["hour1"].",".$row["hour2"].",".$row["hour3"].",".$row["hour4"].",".$row["hour5"].",".$row["hour6"].",".$row["hour7"].",".$row["hour8"].",".$row["hour9"].",".$row["hour10"].",".$row["hour11"].",".$row["hour12"].",".$row["hour13"].",".$row["hour14"].",".$row["hour15"].",".$row["hour16"].",".$row["hour17"].",".$row["hour18"].",".$row["hour19"].",".$row["hour20"].",".$row["hour21"].",".$row["hour22"].",".$row["hour23"].",".$row["hour24"]."";  
+                          }  
+                 ?>
+                           //7.0, 6.9, 9.5, 21.5, 9.6
                            ],
         tooltip: {
             valueSuffix: '°C'
@@ -208,6 +227,99 @@ Highcharts.chart('container2', {
     }]
 });
         </script>
+
+       <!-- <script type="text/javascript">
+Highcharts.chart('container19', {
+    chart: {
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Average Monthly Temperature and humidity in warehouse'
+    },
+    subtitle: {
+        text: 'Source: sensors data'
+    },
+    xAxis: [{
+        categories: ['hour1', 'hour2', 'hour3', 'hour4', 'hour5', 'hour6',
+            'hour7', 'hour8', 'hour9', 'hour10', 'hour11', 'hour12' , 'hour13' , 'hour14' , 'hour15','hour16','hour17','hour18','hour19','hour20','hour21','hour22','hour23','hour24'],
+        crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}°C',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        title: {
+            text: 'Temperature',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: 'humidity',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+            format: '{value} %',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 120,
+        verticalAlign: 'top',
+        y: 100,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || // theme
+            'rgba(255,255,255,0.25)'
+    },
+    series: [{
+        name: 'humidity',
+        type: 'column',
+        yAxis: 1,
+        data: [   
+        <?php  
+                    while($row = mysqli_fetch_array($predicthumid))  
+                          {  
+                              echo "".$row["hour1"].",".$row["hour2"].",".$row["hour3"].",".$row["hour4"].",".$row["hour5"].",".$row["hour6"].",".$row["hour7"].",".$row["hour8"].",".$row["hour9"].",".$row["hour10"].",".$row["hour11"].",".$row["hour12"].",".$row["hour13"].",".$row["hour14"].",".$row["hour15"].",".$row["hour16"].",".$row["hour17"].",".$row["hour18"].",".$row["hour19"].",".$row["hour20"].",".$row["hour21"].",".$row["hour22"].",".$row["hour23"].",".$row["hour24"]."";  
+                          }  
+                 ?> 
+                            
+                            ],
+        tooltip: {
+            valueSuffix: ' %'
+        }
+
+    }, {
+        name: 'Temperature',
+        type: 'spline',
+        data: [  
+                 <?php  
+                    while($row = mysqli_fetch_array($predicttemp))  
+                          {  
+                              echo "".$row["hour1"].",".$row["hour2"].",".$row["hour3"].",".$row["hour4"].",".$row["hour5"].",".$row["hour6"].",".$row["hour7"].",".$row["hour8"].",".$row["hour9"].",".$row["hour10"].",".$row["hour11"].",".$row["hour12"].",".$row["hour13"].",".$row["hour14"].",".$row["hour15"].",".$row["hour16"].",".$row["hour17"].",".$row["hour18"].",".$row["hour19"].",".$row["hour20"].",".$row["hour21"].",".$row["hour22"].",".$row["hour23"].",".$row["hour24"]."";  
+                          }  
+                 ?> 
+                           ],
+        tooltip: {
+            valueSuffix: '°C'
+        } 
+    }]
+});
+        </script>-->
 
    
     
@@ -383,11 +495,55 @@ Highcharts.chart('container2', {
 
 <div class="tabs-animation">
                         <div class="mb-3 card">
-                            <div class="card-header-tab card-header">
-                                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                                    <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
-                                    warehouse Performance
-                                </div>
+                            
+                              
+                                <div class= "" style="height: 70 px">
+                                 <?php 
+while($row = mysqli_fetch_array($predicttemp1)) 
+{ 
+    for ($i=1; $i <=24; $i++) { 
+        $a = "hour";
+          $a .= $i;
+          if($row[$a] >= 39)
+          {
+ // echo "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">
+ // Launch demo modal
+//</button>"<div class="card-header-tab card-header">;
+
+echo "<h2  class=\"text-center bg-danger\" data-toggle=\"modal\" data-target=\"#exampleModal\">
+  Danger!! high temperature  raise detected ! 
+</h2>";
+
+break;
+
+}
+    
+    }
+        
+}
+while($row = mysqli_fetch_array($predicthumid1)) 
+{ 
+    for ($i=1; $i <=24; $i++) { 
+        $a = "hour";
+          $a .= $i;
+          if($row[$a] >= 61)
+          {
+ // echo "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">
+ // Launch demo modal
+//</button>"<div class="card-header-tab card-header">;
+
+echo "<h2  class=\"text-center bg-danger\" data-toggle=\"modal\" data-target=\"#exampleModal2\">
+  Danger!! high  humidity  raise detected ! 
+</h2>";
+break;
+
+}
+    
+    }
+        
+}
+
+?>
 
                             </div>
                             <div class="no-gutters row">
@@ -414,8 +570,14 @@ Highcharts.chart('container2', {
                                                 <img style="width:40px;" src="https://img.icons8.com/dusk/64/000000/power-strip.png">
                                             </i></div>
                                         <div class="widget-chart-content">
-                                            <div class="widget-subheading">Power Cut Time</div>
-                                            <div class="widget-numbers"><span>Not today</span></div>
+                                            <div class="widget-subheading">flames detected???</div>
+                                            <div class="widget-numbers"><span>          <?php
+
+                      while($row = mysqli_fetch_array($flame))  
+                          {  
+                               echo $row["flame"] ;  
+                          } 
+                          ?> </span></div>
                                             
                                         </div>
                                     </div>
@@ -441,7 +603,7 @@ Highcharts.chart('container2', {
                                     <span class="mr-2 opacity-7">
                                         <i class="icon icon-anim-pulse ion-ios-analytics-outline"></i>
                                     </span>
-                                    <span class="mr-1">Current electricity status</span>
+                                    <span class="mr-1">Current climate status</span>
                                 </div>
                             </div>
                         </div>
@@ -480,10 +642,10 @@ Highcharts.chart('container2', {
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th width="20%" class="text-center">Status</th>
-                                                <th class="text-center">Name</th>
-                                                <th class="text-center">Mobile Number</th>
-                                                <th class="text-center">Experience</th>
+                                                <th width="20%" class="text-center">Temperature</th>
+                                                <th class="text-center">Gas</th>
+                                                <th class="text-center">Humidity</th>
+                                                <th class="text-center">Vibrations</th>
                                             
                                             </tr>
                                             </thead>
@@ -491,19 +653,19 @@ Highcharts.chart('container2', {
 
 
                                             <?php
-                                            $sql ="SELECT * FROM staff";
+                                            $sql ="SELECT * FROM sensors";
                                             $qsql = mysqli_query($conn,$sql);
                                             while($rs = mysqli_fetch_array($qsql))
                                             {
                                                 echo "<tr class=\"text-center\">
                                                 <td>
-                                                <strong><strong> Stat </strong>: $rs[status] </td>
+                                                <strong><strong>  </strong>" .$rs["temperature"]. "'C</td>
                                                 <td>
-                                                <strong> <strong>$rs[staffname]</strong></strong>
+                                                <strong> <strong>".$rs["gas"]."ppm</strong></strong>
                                                 </td>
                                                 <td>
-                                                <strong>Mob No</strong> : $rs[mobileno]</td>
-                                                <td><strong> $rs[experience] years</strong></td>
+                                                <strong>Mob No</strong> : ".$rs["humidity"]."%</td>
+                                                <td><strong> ".$rs["vibration"]. "hz</strong></td>
                                                
                                                 </tr>";
                                             }
@@ -523,6 +685,54 @@ Highcharts.chart('container2', {
                    </div>
     </div>
 </div>
+<div>
+   
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">warning !!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    The learning model predicts the  temperature may rise above highest limit in near future!!!
+     plz take required actions before it gets worst !! 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">warning !!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    The learning model predicts the  temperature may rise above highest limit in near future!!!
+     plz take required actions before it gets worst !! 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="app-drawer-overlay d-none animated fadeIn"></div><script type="text/javascript" src="./js/analytics.js"></script></body>
 </html>

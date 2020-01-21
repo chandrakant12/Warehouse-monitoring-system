@@ -1,6 +1,8 @@
 <?php
 $url="https://thingspeak.com/channels/962789/feed.json";
+
 $homepage = file_get_contents($url);
+
 $json =json_decode($homepage,true);
 $conn = mysqli_connect('localhost','root','','iicdc');
 /*$t=$json['temperature'];
