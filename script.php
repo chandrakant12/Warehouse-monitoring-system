@@ -1,7 +1,6 @@
 <?php 
 
-$command = escapeshellcmd('./python/data.py');
-$output = shell_exec($command);
+$output = shell_exec('python3 ');
 echo $output;
 
 ?>

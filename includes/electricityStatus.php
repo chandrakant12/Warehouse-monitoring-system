@@ -513,6 +513,7 @@ while($row = mysqli_fetch_array($predicttemp1))
 echo "<h2  class=\"text-center bg-danger\" data-toggle=\"modal\" data-target=\"#exampleModal\">
   Danger!! high temperature  raise detected ! 
 </h2>";
+
 break;
 
 }
