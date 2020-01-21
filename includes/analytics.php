@@ -360,7 +360,7 @@ Highcharts.chart('container10', {
     },
     labels: {
         items: [{
-            html: 'Total fruit consumption',
+            html: 'Gas Composition In Warehouse',
             style: {
                 left: '50px',
                 top: '18px',
@@ -373,7 +373,7 @@ Highcharts.chart('container10', {
     },
     series: [{
         type: 'column',
-        name: 'Jane',
+        name: 'lpg',
         data: [<?php
                       while($row = mysqli_fetch_array($gaslpg))  
                           {  
@@ -382,7 +382,7 @@ Highcharts.chart('container10', {
                           ?>]
     }, {
         type: 'column',
-        name: 'John',
+        name: 'co',
         data: [<?php
                       while($row = mysqli_fetch_array($gasco))  
                           {  
@@ -391,7 +391,7 @@ Highcharts.chart('container10', {
                           ?>]
     }, {
         type: 'column',
-        name: 'Joe',
+        name: 'smoke',
         data: [<?php
                       while($row = mysqli_fetch_array($gassmoke))  
                           {  
@@ -401,7 +401,7 @@ Highcharts.chart('container10', {
     }, {
         type: 'spline',
         name: 'Average',
-        data: [3, 2.67, 3, 6.33, 3.33],
+        data: [],
         marker: {
             lineWidth: 2,
             lineColor: Highcharts.getOptions().colors[3],
