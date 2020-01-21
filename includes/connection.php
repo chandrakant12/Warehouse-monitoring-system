@@ -2,7 +2,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbname = "iicdc";
+	$dbname = "IICDC";
 	
 	//completeHospital
 
