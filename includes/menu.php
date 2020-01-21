@@ -224,7 +224,7 @@
                     -->
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="userElectricityStatus.php">climate Status</a>
+                        <a class="nav-link" href="userElectricityStatus.php">Climate Status</a>
                     </li>
                     
                     <li class="nav-item">

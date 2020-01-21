@@ -11,10 +11,10 @@
   
   <select class="custom-select " style="height: 60px" name="warevalue">
     <option selected>choose warehouse</option>
-    <option value="1">warehouse1</option>
-    <option value="2">warehouse2</option>
-    <option value="3">warehouse3</option>
-    <option value="4">warehouse4</option>
+    <option value="1">Warehouse1</option>
+    <option value="2">Warehouse2</option>
+    <option value="3">Warehouse3</option>
+    <option value="4">Warehouse4</option>
 
   </select>
   </div>
@@ -31,14 +31,15 @@
 <div>
 <?php
 
-echo "<h1 class = \"text-center\">warehouse $_POST[warevalue]</h1>"?>
+echo "<h1 class = \"text-center\">Warehouse $_POST[warevalue]</h1>"?>
 </div>
 
 <?php
 session_start(); 
 //for graph two
 $connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
-$cquery1 = "SELECT * FROM `sensors` where userid = 1 and whid = '$_POST[warevalue]' ";  
+$cquery1 = "SELECT * FROM `sensors` where userid = 1 and whid = '$_POST[warevalue]' "; 
+$cquery2 = "SELECT * FROM `sensors` where userid = 1 and whid = '$_POST[warevalue]' ";   
 $gasd = "SELECT * FROM `sensors` where userid = 1 and whid =  '$_POST[warevalue]' ";  
 
 $cresult1 = mysqli_query($connect1, $cquery1);  
@@ -51,6 +52,11 @@ $gasco = mysqli_query($connect1, $cquery1);
 $gassmoke = mysqli_query($connect1, $cquery1); 
 
 $gas1 = mysqli_query($connect1, $cquery1); 
+$date= mysqli_query($connect1, $cquery2);
+$date1= mysqli_query($connect1, $cquery2);
+$date2= mysqli_query($connect1, $cquery2);
+$date3= mysqli_query($connect1, $cquery2);
+
 ?>
 <!--script for graphs-->
 <script src="./js/highcharts.js"></script>
@@ -106,13 +112,16 @@ Highcharts.chart('container', {
     },
     xAxis: {
         categories: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-            'Sunday'
+
+                    <?php
+
+                      while($row = mysqli_fetch_array($date))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>
+
         ],
       
     },
@@ -173,8 +182,14 @@ Highcharts.chart('container2', {
         text: 'Source: sensors data'
     },
     xAxis: [{
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date2))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>],
         crosshair: true
     }],
     yAxis: [{ // Primary yAxis
@@ -272,7 +287,14 @@ Highcharts.chart('container5', {
         text: 'Source: sensors data'
     },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date1))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>]
     },
     yAxis: {
         title: {
@@ -316,12 +338,7 @@ Highcharts.chart('container5', {
     </div>
   -->   <figure class="highcharts-figure">
     <div id="container10"></div>
-    <p class="highcharts-description">
-        Chart showing how different series types can be combined in a single
-        chart. The chart is using a set of column series, overlaid by a line and
-        a pie series. The line is illustrating the column averages, while the
-        pie is illustrating the column totals.
-    </p>
+    
 </figure>
 
 
@@ -332,7 +349,14 @@ Highcharts.chart('container10', {
         text: 'Combination chart'
     },
     xAxis: {
-        categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday']
+        categories: [ <?php
+
+                      while($row = mysqli_fetch_array($date3))  
+                          {    
+                           
+                               echo "\"".date("h:ia",strtotime($row['Time']))."\",";  
+                          } 
+                          ?>]
     },
     labels: {
         items: [{

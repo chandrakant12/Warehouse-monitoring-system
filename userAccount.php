@@ -36,6 +36,8 @@
     <h2>User Account</h2>
 </div>-->
 <div class="container jumbotron text-left hoverable p-4">
+    <div class="row">
+        <div class="col">
      <h2>User Account</h2>
 
     <h4>This account is registered under <?php echo $rsuser[username]; ?> </h4>
@@ -45,7 +47,17 @@
             <h4>Personal Details</h4>
             <h4>Date Of Birth : <?php echo $rsuser[dob]; ?></h4>
             <h4>Area : <?php echo $rsuser[address]; ?></h4>
+ </div>
+ <div class="col">
+<h3> live streaming options :</h3>
+<a href="https://www.youtube.com/">
+<button class="btn btn-danger"> watch youtube stream </button>
+</a>
+<br>
+  <button class="btn btn-warning">watch localstream </button>
+</div>
 
+</div>
 </div>
     <!--
     <?php
@@ -95,7 +107,7 @@
             <h4>Area : <?php echo $rsuser[address]; ?></h4>-->
             <!--<h4>Email Id : adityaspmahajan@gmail.com<?php echo $email; ?></h4>-->
 
-  
+
 
     <div class="container jumbotron text-center hoverable p-4">
         <div class="row">
