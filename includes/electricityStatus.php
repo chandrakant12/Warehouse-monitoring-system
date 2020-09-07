@@ -4,7 +4,7 @@ session_start();
  $i=1;
  $connect1 = mysqli_connect("localhost", "root", "", "iicdc");  
  $cquery1 = " SELECT * FROM sensors ORDER BY id DESC LIMIT 1";  
- $gasd = " SELECT * FROM predictedhumid ORDER BY id DESC LIMIT 1" ;  
+ $gasd = " SELECT * FROM predictedhumid ORDER BY id asc LIMIT 1" ;  
  $gasd1 = " SELECT * FROM predictedtemp ORDER BY id DESC LIMIT 1" ; 
 
 $predicttemp= mysqli_query($connect1, $gasd1); 
@@ -29,89 +29,8 @@ $predicthumid1= mysqli_query($connect1, $gasd);
 
 <div class="app-container app-theme-white fixed-header ">
   <div class="app-main">
-           <!-- <div class="app-sidebar sidebar-shadow">
-                <div class="app-header__logo">
-                    <div class="logo-src"></div>
-                    <div class="header__pane ml-auto">
-                        <div>
-                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-header__mobile-menu">
-                    <div>
-                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="app-header__menu">
-                    <span>
-                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                            <span class="btn-icon-wrapper">
-                                <i class="fa fa-ellipsis-v fa-w-6"></i>
-                            </span>
-                        </button>
-                    </span>
-                </div>   <div class="scrollbar-sidebar">
-                   <div class="app-sidebar__inner">
-                        <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">Menu</li>
-                            <li >
-                                <a href="userDashboard.php">
-                                    Dashboard
-                                    <i class="metismenu-state-icon  caret-left">
-                                        <img width="40px;" src="https://img.icons8.com/clouds/100/000000/box-important-3.png">
-                                    </i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="userAccount.php">
-                                    Account
-                                    <i class="metismenu-state-icon  caret-left">
-                                        <img width="25px;" src="https://img.icons8.com/dusk/100/000000/positive-dynamic.png">
-                                    </i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Profile
-                                    <i class="metismenu-state-icon  caret-left">
-                                        <img width="30px;" src="https://img.icons8.com/color/48/000000/contract-job.png">
-                                    </i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="userProfile.php">
-                                            <i class="metismenu-icon"></i>
-                                            View Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="userChangePassword.php">
-                                            <i class="metismenu-icon">
-                                            </i>Change Password
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="userElectricityStatus.php">
-                                    Electricity Status
-                                    <i class="metismenu-state-icon caret-left">
-                                        <img width="30px" src="https://img.icons8.com/doodle/48/000000/car-battery.png">
-                                    </i>
-                                </a>
-                            </li>
-                    </div>
-                </div>
-            </div>  --> 
+         
+            
             <link href="./css/graphs1.css" rel="stylesheet"></head>
              <div class="app-main__outer">
                 <div class="app-main__inner">

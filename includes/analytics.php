@@ -411,7 +411,7 @@ Highcharts.chart('container10', {
         type: 'pie',
         name: 'Total consumption',
         data: [{
-            name: 'Jane',
+            name: '',
             y: 13,
             color: Highcharts.getOptions().colors[0] // Jane's color
         }, {
